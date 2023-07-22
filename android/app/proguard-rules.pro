@@ -1,0 +1,1 @@
+-keep class com.example.skripsi_nih_bos.BuildConfig { *; }
