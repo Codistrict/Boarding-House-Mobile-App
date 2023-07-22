@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:ficonsax/ficonsax.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -17,31 +19,34 @@ class UserNavigationView extends GetView<NavController> {
     return Scaffold(
       extendBody: true,
       body: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 56, horizontal: 24),
-        child: Center(
-          child: Card(
-            color: ColorsTheme.primary,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(16),
-            ),
-            child: Padding(
-              padding: const EdgeInsets.symmetric(vertical: 56, horizontal: 32),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                mainAxisSize: MainAxisSize.min,
+          padding: EdgeInsets.symmetric(vertical: 35, horizontal: 20),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const ReText(
+                text: 'WELCOME, User',
+                isHeading: true,
+                fontSize: 25,
+                fontWeight: FontWeight.bold,
+                color: ColorsTheme.primary,
+                textAlign: TextAlign.center,
+              ),
+              const SizedBox(height: 10),
+              const Divider(
+                thickness: 2,
+                color: ColorsTheme.primary,
+              ),
+              const SizedBox(height: 10),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   const ReText(
-                    text: 'Im User',
+                    text: 'History',
                     isHeading: true,
-                    fontSize: 32,
+                    fontSize: 18,
                     fontWeight: FontWeight.bold,
-                    color: ColorsTheme.onPrimary,
+                    color: ColorsTheme.primary,
                     textAlign: TextAlign.center,
-                  ),
-                  const Icon(
-                    IconsaxBold.arrow_down,
-                    size: 56,
-                    color: ColorsTheme.onPrimary,
                   ),
                   ReElevatedButton(
                     onPressed: () {
@@ -56,10 +61,72 @@ class UserNavigationView extends GetView<NavController> {
                   ),
                 ],
               ),
-            ),
-          ),
-        ),
-      ),
+              const SizedBox(height: 10),
+              Expanded(
+                child: ScrollConfiguration(
+                  behavior: ScrollConfiguration.of(context).copyWith(
+                    dragDevices: {
+                      PointerDeviceKind.mouse,
+                      PointerDeviceKind.touch
+                    },
+                  ),
+                  child: ListView.builder(
+                    shrinkWrap: true,
+                    scrollDirection: Axis.vertical,
+                    controller: ScrollController(),
+                    physics: const ClampingScrollPhysics(),
+                    itemCount: 15,
+                    itemBuilder: (context, index) {
+                      return Card(
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10),
+                          side: const BorderSide(color: ColorsTheme.secondary),
+                        ),
+                        color: ColorsTheme.onPrimary,
+                        child: const ListTile(
+                          title: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  ReText(
+                                    text: 'SPX000111*******',
+                                    isHeading: true,
+                                    fontSize: 17,
+                                    fontWeight: FontWeight.w400,
+                                    color: ColorsTheme.primary,
+                                    textAlign: TextAlign.center,
+                                  ),
+                                  SizedBox(height: 5),
+                                  ReText(
+                                    text: 'Siomay Street, 43 no. 25',
+                                    isHeading: true,
+                                    fontSize: 13,
+                                    fontWeight: FontWeight.w400,
+                                    color: ColorsTheme.primary,
+                                    textAlign: TextAlign.center,
+                                  ),
+                                ],
+                              ),
+                              ReText(
+                                text: 'On The Way',
+                                isHeading: true,
+                                fontSize: 17,
+                                fontWeight: FontWeight.w800,
+                                color: ColorsTheme.primary,
+                                textAlign: TextAlign.center,
+                              ),
+                            ],
+                          ),
+                        ),
+                      );
+                    },
+                  ),
+                ),
+              )
+            ],
+          )),
       bottomNavigationBar: Obx(
         () => ReNavbar(
           index: controller.selectedIndex(),

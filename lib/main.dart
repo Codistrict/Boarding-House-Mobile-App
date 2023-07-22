@@ -97,6 +97,18 @@ class MainApp extends StatelessWidget {
               name: '/signup/regis-building',
               page: () => const RegisterBuildingView(),
             ),
+            GetPage(
+              name: '/admin/resident',
+              page: () => const AdminResidentNavigationView(),
+            ),
+            GetPage(
+              name: '/admin/detail',
+              page: () => const DetailTransactionNavigationView(),
+            ),
+            GetPage(
+              name: '/postman/form',
+              page: () => const PostmanFormPageNavigationView(),
+            ),
           ],
         );
       },
