@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ficonsax/ficonsax.dart';
+import 'package:skripsi_kos_app/bindings.dart';
 
 import 'package:skripsi_kos_app/themes/colors/colors.dart';
 import 'package:skripsi_kos_app/widgets/widgets.dart';
 import '../controllers/controllers.dart';
 import '../views/views.dart';
-import '../models/models.dart';
-import '../../services/services.dart';
 
 class AuthView extends GetView<AuthController> {
   const AuthView({super.key});
@@ -19,7 +18,8 @@ class AuthView extends GetView<AuthController> {
         if (controller.role() == 1) {
           return const UserNavigationView();
         } else if (controller.role() == 2) {
-          return const PostmanNavigationView();
+          TextScannerBinding().dependencies();
+          return PostmanNavigationView();
         } else {
           return const AdminNavigationView();
         }

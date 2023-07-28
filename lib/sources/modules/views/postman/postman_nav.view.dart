@@ -1,28 +1,26 @@
 import 'package:ficonsax/ficonsax.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 import 'package:skripsi_kos_app/widgets/widgets.dart';
 import '../../../../themes/colors/colors.dart';
 import '../../controllers/controllers.dart';
-import '../../views/views.dart';
-import '../../models/models.dart';
-import '../../../services/services.dart';
 
 import 'dart:ui';
 
 import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 
 class PostmanNavigationView extends GetView<NavController> {
-  const PostmanNavigationView({super.key});
+  PostmanNavigationView({super.key});
+
+  final controllerTS = Get.find<TextScannerController>();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       extendBody: true,
       body: Padding(
-          padding: EdgeInsets.symmetric(vertical: 35, horizontal: 20),
+          padding: const EdgeInsets.symmetric(vertical: 35, horizontal: 20),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -163,7 +161,7 @@ class PostmanNavigationView extends GetView<NavController> {
                 color: ColorsTheme.onPrimary,
               ),
               backgroundColor: ColorsTheme.secondary,
-              onTap: () {},
+              onTap: () => controllerTS.openCamera(),
               labelBackgroundColor: ColorsTheme.secondary),
           // FAB 2
           SpeedDialChild(
@@ -214,7 +212,7 @@ class PostmanFormPageNavigationView extends GetView<NavController> {
         ),
       ),
       body: Padding(
-          padding: EdgeInsets.symmetric(vertical: 35, horizontal: 20),
+          padding: const EdgeInsets.symmetric(vertical: 35, horizontal: 20),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -322,7 +320,7 @@ class PostmanFormPageNavigationView extends GetView<NavController> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             ReElevatedButton(
-                              padding: EdgeInsets.fromLTRB(25, 5, 25, 5),
+                              padding: const EdgeInsets.fromLTRB(25, 5, 25, 5),
                               onPressed: () {
                                 controller.ctrlAuth.signOut();
                               },
@@ -334,7 +332,7 @@ class PostmanFormPageNavigationView extends GetView<NavController> {
                               ),
                             ),
                             ReElevatedButton(
-                              padding: EdgeInsets.fromLTRB(25, 5, 25, 5),
+                              padding: const EdgeInsets.fromLTRB(25, 5, 25, 5),
                               onPressed: () {
                                 controller.ctrlAuth.signOut();
                               },

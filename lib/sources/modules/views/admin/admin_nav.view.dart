@@ -10,8 +10,6 @@ import 'package:skripsi_kos_app/widgets/widgets.dart';
 import '../../../../themes/colors/colors.dart';
 import '../../controllers/controllers.dart';
 import '../../views/views.dart';
-import '../../models/models.dart';
-import '../../../services/services.dart';
 
 class AdminNavigationView extends GetView<NavController> {
   const AdminNavigationView({super.key});
@@ -21,17 +19,33 @@ class AdminNavigationView extends GetView<NavController> {
     return Scaffold(
       extendBody: true,
       body: Padding(
-          padding: EdgeInsets.symmetric(vertical: 35, horizontal: 20),
+          padding: const EdgeInsets.symmetric(vertical: 35, horizontal: 20),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const ReText(
-                text: 'WELCOME, Admin',
-                isHeading: true,
-                fontSize: 25,
-                fontWeight: FontWeight.bold,
-                color: ColorsTheme.primary,
-                textAlign: TextAlign.center,
+              Row(
+                children: [
+                  const ReText(
+                    text: 'WELCOME, Admin',
+                    isHeading: true,
+                    fontSize: 25,
+                    fontWeight: FontWeight.bold,
+                    color: ColorsTheme.primary,
+                    textAlign: TextAlign.center,
+                  ),
+                  const Spacer(),
+                  ReElevatedButton(
+                    onPressed: () {
+                      controller.ctrlAuth.signOut();
+                    },
+                    child: const ReText(
+                      text: 'Sign Out',
+                      color: ColorsTheme.onPrimary,
+                      fontSize: 16,
+                      fontWeight: FontWeight.w700,
+                    ),
+                  ),
+                ],
               ),
               const SizedBox(height: 10),
               const Divider(
@@ -43,7 +57,7 @@ class AdminNavigationView extends GetView<NavController> {
                 color: ColorsTheme.primary,
                 child: ListTile(
                   title: Padding(
-                    padding: EdgeInsets.fromLTRB(0, 10, 0, 10),
+                    padding: const EdgeInsets.fromLTRB(0, 10, 0, 10),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -55,13 +69,14 @@ class AdminNavigationView extends GetView<NavController> {
                           color: ColorsTheme.onPrimary,
                           textAlign: TextAlign.center,
                         ),
-                        SizedBox(height: 5),
+                        const SizedBox(height: 5),
                         Text(
-                            "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries",
-                            style: GoogleFonts.sourceSansPro(
-                                fontSize: 13,
-                                fontWeight: FontWeight.w400,
-                                color: ColorsTheme.onPrimary))
+                          "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries",
+                          style: GoogleFonts.sourceSansPro(
+                              fontSize: 13,
+                              fontWeight: FontWeight.w400,
+                              color: ColorsTheme.onPrimary),
+                        )
                       ],
                     ),
                   ),
@@ -250,7 +265,7 @@ class AdminResidentNavigationView extends GetView<NavController> {
         ),
       ),
       body: Padding(
-          padding: EdgeInsets.fromLTRB(20, 35, 20, 5),
+          padding: const EdgeInsets.fromLTRB(20, 35, 20, 5),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -363,90 +378,88 @@ class DetailTransactionNavigationView extends GetView<NavController> {
         ),
       ),
       body: Padding(
-          padding: EdgeInsets.fromLTRB(20, 35, 20, 5),
+          padding: const EdgeInsets.fromLTRB(20, 35, 20, 5),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Container(
-                child: const Card(
-                  color: ColorsTheme.primary,
-                  child: ListTile(
-                    title: Padding(
-                        padding: EdgeInsets.fromLTRB(0, 10, 0, 10),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Column(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    ReText(
-                                      text: 'SPX031415151',
-                                      isHeading: true,
-                                      fontSize: 15,
-                                      fontWeight: FontWeight.w700,
-                                      color: ColorsTheme.onPrimary,
-                                      textAlign: TextAlign.center,
-                                    ),
-                                    ReText(
-                                      text: 'Kendrew',
-                                      isHeading: true,
-                                      fontSize: 15,
-                                      fontWeight: FontWeight.w400,
-                                      color: ColorsTheme.onPrimary,
-                                      textAlign: TextAlign.center,
-                                    ),
-                                    ReText(
-                                      text: 'Siomay Street',
-                                      isHeading: true,
-                                      fontSize: 15,
-                                      fontWeight: FontWeight.w400,
-                                      color: ColorsTheme.onPrimary,
-                                      textAlign: TextAlign.center,
-                                    ),
-                                    ReText(
-                                      text: 'Melati Resident',
-                                      isHeading: true,
-                                      fontSize: 15,
-                                      fontWeight: FontWeight.w400,
-                                      color: ColorsTheme.onPrimary,
-                                      textAlign: TextAlign.center,
-                                    ),
-                                    ReText(
-                                      text: 'Room : 505',
-                                      isHeading: true,
-                                      fontSize: 15,
-                                      fontWeight: FontWeight.w400,
-                                      color: ColorsTheme.onPrimary,
-                                      textAlign: TextAlign.center,
-                                    ),
-                                  ],
-                                ),
-                                SizedBox(height: 20),
-                                ReText(
-                                  text: 'Postman : Nanang',
-                                  isHeading: true,
-                                  fontSize: 15,
-                                  fontWeight: FontWeight.w700,
-                                  color: ColorsTheme.onPrimary,
-                                  textAlign: TextAlign.center,
-                                ),
-                              ],
-                            ),
-                            ReText(
-                              text: 'Completed',
-                              isHeading: true,
-                              fontSize: 20,
-                              fontWeight: FontWeight.w700,
-                              color: ColorsTheme.onPrimary,
-                              textAlign: TextAlign.center,
-                            ),
-                          ],
-                        )),
-                  ),
+              const Card(
+                color: ColorsTheme.primary,
+                child: ListTile(
+                  title: Padding(
+                      padding: EdgeInsets.fromLTRB(0, 10, 0, 10),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Column(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  ReText(
+                                    text: 'SPX031415151',
+                                    isHeading: true,
+                                    fontSize: 15,
+                                    fontWeight: FontWeight.w700,
+                                    color: ColorsTheme.onPrimary,
+                                    textAlign: TextAlign.center,
+                                  ),
+                                  ReText(
+                                    text: 'Kendrew',
+                                    isHeading: true,
+                                    fontSize: 15,
+                                    fontWeight: FontWeight.w400,
+                                    color: ColorsTheme.onPrimary,
+                                    textAlign: TextAlign.center,
+                                  ),
+                                  ReText(
+                                    text: 'Siomay Street',
+                                    isHeading: true,
+                                    fontSize: 15,
+                                    fontWeight: FontWeight.w400,
+                                    color: ColorsTheme.onPrimary,
+                                    textAlign: TextAlign.center,
+                                  ),
+                                  ReText(
+                                    text: 'Melati Resident',
+                                    isHeading: true,
+                                    fontSize: 15,
+                                    fontWeight: FontWeight.w400,
+                                    color: ColorsTheme.onPrimary,
+                                    textAlign: TextAlign.center,
+                                  ),
+                                  ReText(
+                                    text: 'Room : 505',
+                                    isHeading: true,
+                                    fontSize: 15,
+                                    fontWeight: FontWeight.w400,
+                                    color: ColorsTheme.onPrimary,
+                                    textAlign: TextAlign.center,
+                                  ),
+                                ],
+                              ),
+                              SizedBox(height: 20),
+                              ReText(
+                                text: 'Postman : Nanang',
+                                isHeading: true,
+                                fontSize: 15,
+                                fontWeight: FontWeight.w700,
+                                color: ColorsTheme.onPrimary,
+                                textAlign: TextAlign.center,
+                              ),
+                            ],
+                          ),
+                          ReText(
+                            text: 'Completed',
+                            isHeading: true,
+                            fontSize: 20,
+                            fontWeight: FontWeight.w700,
+                            color: ColorsTheme.onPrimary,
+                            textAlign: TextAlign.center,
+                          ),
+                        ],
+                      )),
                 ),
               ),
               Expanded(

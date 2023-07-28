@@ -7,9 +7,6 @@ import 'package:get/get.dart';
 import 'package:skripsi_kos_app/widgets/widgets.dart';
 import '../../../../themes/colors/colors.dart';
 import '../../controllers/controllers.dart';
-import '../../views/views.dart';
-import '../../models/models.dart';
-import '../../../services/services.dart';
 
 class UserNavigationView extends GetView<NavController> {
   const UserNavigationView({super.key});
@@ -19,7 +16,7 @@ class UserNavigationView extends GetView<NavController> {
     return Scaffold(
       extendBody: true,
       body: Padding(
-          padding: EdgeInsets.symmetric(vertical: 35, horizontal: 20),
+          padding: const EdgeInsets.symmetric(vertical: 35, horizontal: 20),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [

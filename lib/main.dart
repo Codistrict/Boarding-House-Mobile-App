@@ -87,7 +87,8 @@ class MainApp extends StatelessWidget {
             ),
             GetPage(
               name: '/postman/nav',
-              page: () => const PostmanNavigationView(),
+              page: () => PostmanNavigationView(),
+              binding: TextScannerBinding(),
             ),
             GetPage(
               name: '/admin/nav',
@@ -108,6 +109,10 @@ class MainApp extends StatelessWidget {
             GetPage(
               name: '/postman/form',
               page: () => const PostmanFormPageNavigationView(),
+            ),
+            GetPage(
+              name: '/postman/scanner',
+              page: () => const TextScannerView(),
             ),
           ],
         );

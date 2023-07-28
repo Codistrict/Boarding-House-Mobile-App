@@ -5,9 +5,6 @@ import 'package:get/get.dart';
 import 'package:skripsi_kos_app/themes/colors/colors.dart';
 import 'package:skripsi_kos_app/widgets/widgets.dart';
 import '../controllers/controllers.dart';
-import '../views/views.dart';
-import '../models/models.dart';
-import '../../services/services.dart';
 
 class SignUpView extends GetView<AuthController> {
   const SignUpView({super.key});

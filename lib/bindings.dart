@@ -17,3 +17,11 @@ class NavBinding extends Bindings {
     Get.lazyPut(() => NavController(), fenix: true);
   }
 }
+
+class TextScannerBinding extends Bindings {
+  @override
+  void dependencies() {
+    // TODO: implement dependencies
+    Get.lazyPut(() => TextScannerController(), fenix: true);
+  }
+}
