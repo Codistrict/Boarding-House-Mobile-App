@@ -206,7 +206,9 @@ class AdminNavigationView extends GetView<NavController> {
                 color: ColorsTheme.onPrimary,
               ),
               backgroundColor: ColorsTheme.secondary,
-              onTap: () {},
+              onTap: () {
+                controller.imagePickerController.pickFile();
+              },
               labelBackgroundColor: ColorsTheme.secondary),
           SpeedDialChild(
               elevation: 5,
@@ -224,9 +226,7 @@ class AdminNavigationView extends GetView<NavController> {
                 color: ColorsTheme.onPrimary,
               ),
               backgroundColor: ColorsTheme.secondary,
-              onTap: () {
-                controller.ctrlAuth.signOut();
-              },
+              onTap: () {},
               labelBackgroundColor: ColorsTheme.secondary),
         ],
       ),
@@ -265,84 +265,85 @@ class AdminResidentNavigationView extends GetView<NavController> {
         ),
       ),
       body: Padding(
-          padding: const EdgeInsets.fromLTRB(20, 35, 20, 5),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Expanded(
-                child: ScrollConfiguration(
-                  behavior: ScrollConfiguration.of(context).copyWith(
-                    dragDevices: {
-                      PointerDeviceKind.mouse,
-                      PointerDeviceKind.touch
-                    },
-                  ),
-                  child: ListView.builder(
-                    shrinkWrap: true,
-                    scrollDirection: Axis.vertical,
-                    controller: ScrollController(),
-                    physics: const ClampingScrollPhysics(),
-                    itemCount: 5,
-                    itemBuilder: (context, index) {
-                      return Card(
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10),
-                          side: const BorderSide(color: ColorsTheme.secondary),
-                        ),
-                        color: ColorsTheme.onPrimary,
-                        child: ListTile(
-                          title: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              const Row(
-                                children: [
-                                  CircleAvatar(
-                                    radius: 35,
-                                    backgroundColor: ColorsTheme.primary,
-                                  ),
-                                  SizedBox(width: 10),
-                                  Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      ReText(
-                                        text: 'Michael',
-                                        isHeading: true,
-                                        fontSize: 15,
-                                        fontWeight: FontWeight.w400,
-                                        color: ColorsTheme.primary,
-                                        textAlign: TextAlign.center,
-                                      ),
-                                      SizedBox(height: 5),
-                                      ReText(
-                                        text: 'Room 505',
-                                        isHeading: true,
-                                        fontSize: 13,
-                                        fontWeight: FontWeight.w400,
-                                        color: ColorsTheme.primary,
-                                        textAlign: TextAlign.center,
-                                      ),
-                                    ],
-                                  ),
-                                ],
-                              ),
-                              IconButton(
-                                  onPressed: () {},
-                                  icon: const Icon(
-                                    Icons.cancel_presentation,
-                                    color: ColorsTheme.secondary,
-                                    size: 35,
-                                  ))
-                            ],
-                          ),
-                        ),
-                      );
-                    },
-                  ),
+        padding: const EdgeInsets.fromLTRB(20, 35, 20, 5),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Expanded(
+              child: ScrollConfiguration(
+                behavior: ScrollConfiguration.of(context).copyWith(
+                  dragDevices: {
+                    PointerDeviceKind.mouse,
+                    PointerDeviceKind.touch
+                  },
                 ),
-              )
-            ],
-          )),
+                child: ListView.builder(
+                  shrinkWrap: true,
+                  scrollDirection: Axis.vertical,
+                  controller: ScrollController(),
+                  physics: const ClampingScrollPhysics(),
+                  itemCount: 5,
+                  itemBuilder: (context, index) {
+                    return Card(
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10),
+                        side: const BorderSide(color: ColorsTheme.secondary),
+                      ),
+                      color: ColorsTheme.onPrimary,
+                      child: ListTile(
+                        title: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            const Row(
+                              children: [
+                                CircleAvatar(
+                                  radius: 35,
+                                  backgroundColor: ColorsTheme.primary,
+                                ),
+                                SizedBox(width: 10),
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    ReText(
+                                      text: 'Michael',
+                                      isHeading: true,
+                                      fontSize: 15,
+                                      fontWeight: FontWeight.w400,
+                                      color: ColorsTheme.primary,
+                                      textAlign: TextAlign.center,
+                                    ),
+                                    SizedBox(height: 5),
+                                    ReText(
+                                      text: 'Room 505',
+                                      isHeading: true,
+                                      fontSize: 13,
+                                      fontWeight: FontWeight.w400,
+                                      color: ColorsTheme.primary,
+                                      textAlign: TextAlign.center,
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
+                            IconButton(
+                              onPressed: () {},
+                              icon: const Icon(
+                                Icons.cancel_presentation,
+                                color: ColorsTheme.secondary,
+                                size: 35,
+                              ),
+                            )
+                          ],
+                        ),
+                      ),
+                    );
+                  },
+                ),
+              ),
+            )
+          ],
+        ),
+      ),
     );
   }
 }

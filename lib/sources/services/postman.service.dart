@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:flutter_config/flutter_config.dart';
 
-class AuthService {
+class PostmanService {
   final path = FlutterConfig.get('API_PATH');
 
   // SignIn

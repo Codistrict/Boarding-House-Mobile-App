@@ -88,11 +88,16 @@ class MainApp extends StatelessWidget {
             GetPage(
               name: '/postman/nav',
               page: () => PostmanNavigationView(),
-              binding: TextScannerBinding(),
+              bindings: [
+                TextScannerBinding(),
+              ],
             ),
             GetPage(
               name: '/admin/nav',
               page: () => const AdminNavigationView(),
+              bindings: [
+                ImagePickerBinding(),
+              ],
             ),
             GetPage(
               name: '/signup/regis-building',

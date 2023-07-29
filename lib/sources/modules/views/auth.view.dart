@@ -18,10 +18,11 @@ class AuthView extends GetView<AuthController> {
         if (controller.role() == 1) {
           return const UserNavigationView();
         } else if (controller.role() == 2) {
+          ImagePickerBinding().dependencies();
+          return AdminNavigationView();
+        } else {
           TextScannerBinding().dependencies();
           return PostmanNavigationView();
-        } else {
-          return const AdminNavigationView();
         }
       } else {
         return const SelectRoleView();
@@ -79,7 +80,7 @@ class SelectRoleView extends GetView<AuthController> {
                   ),
                   ReElevatedButton(
                     onPressed: () {
-                      controller.role(2);
+                      controller.role(3);
                       Get.toNamed('/signin');
                       debugPrint(
                           'Role: ${controller.role()}\nSession: ${controller.session()}');
@@ -92,7 +93,7 @@ class SelectRoleView extends GetView<AuthController> {
                   ),
                   ReElevatedButton(
                     onPressed: () {
-                      controller.role(3);
+                      controller.role(2);
                       Get.toNamed('/signin');
                       debugPrint(
                           'Role: ${controller.role()}\nSession: ${controller.session()}');

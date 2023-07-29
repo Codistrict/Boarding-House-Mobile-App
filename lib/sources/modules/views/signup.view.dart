@@ -29,7 +29,7 @@ class SignUpView extends GetView<AuthController> {
                 ReText(
                   text: controller.role() == 1
                       ? 'User'
-                      : controller.role() == 2
+                      : controller.role() == 3
                           ? 'Postman'
                           : 'Admin',
                   isHeading: true,
@@ -42,7 +42,7 @@ class SignUpView extends GetView<AuthController> {
                   child: Icon(
                     controller.role() == 1
                         ? IconsaxBold.user_square
-                        : controller.role() == 2
+                        : controller.role() == 3
                             ? IconsaxBold.box
                             : IconsaxBold.key,
                     color: ColorsTheme.primary,
@@ -79,6 +79,7 @@ class SignUpView extends GetView<AuthController> {
                     ReTextField(
                       textController: controller.textCtrlEmail(),
                       hintText: 'Please type your email here!',
+                      validator: controller.validateEmail,
                     ),
                   ],
                 ),
@@ -97,6 +98,7 @@ class SignUpView extends GetView<AuthController> {
                     ReTextField(
                       textController: controller.textCtrlPassword(),
                       hintText: 'Please type your password here!',
+                      validator: controller.validatePassword,
                     ),
                   ],
                 ),
@@ -105,14 +107,14 @@ class SignUpView extends GetView<AuthController> {
                 ),
                 ReElevatedButton(
                   onPressed: () {
-                    if (controller.role() != 3) {
+                    if (controller.role() != 2) {
                       controller.signUp();
                     } else {
                       Get.toNamed('/signup/regis-building');
                     }
                   },
                   child: ReText(
-                    text: controller.role() != 3 ? 'Sign Up' : 'Next',
+                    text: controller.role() != 2 ? 'Sign Up' : 'Next',
                     color: ColorsTheme.onPrimary,
                     fontWeight: FontWeight.w700,
                   ),
@@ -200,7 +202,7 @@ class RegisterBuildingView extends GetView<AuthController> {
                       margin: EdgeInsets.symmetric(vertical: 2, horizontal: 12),
                     ),
                     ReTextField(
-                      textController: controller.textCtrlName(),
+                      textController: controller.textCtrlBuilding(),
                       hintText: 'Please type building name!',
                     ),
                   ],
@@ -218,7 +220,7 @@ class RegisterBuildingView extends GetView<AuthController> {
                       margin: EdgeInsets.symmetric(vertical: 2, horizontal: 12),
                     ),
                     ReTextField(
-                      textController: controller.textCtrlEmail(),
+                      textController: controller.textCtrlStreet(),
                       hintText: 'Please type street here!',
                     ),
                   ],
@@ -236,7 +238,7 @@ class RegisterBuildingView extends GetView<AuthController> {
                       margin: EdgeInsets.symmetric(vertical: 2, horizontal: 12),
                     ),
                     ReTextField(
-                      textController: controller.textCtrlPassword(),
+                      textController: controller.textCtrlBiography(),
                       hintText: 'Please type biography here!',
                       maxLine: 8,
                     ),

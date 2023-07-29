@@ -29,7 +29,7 @@ class LoginView extends GetView<AuthController> {
                 ReText(
                   text: controller.role() == 1
                       ? 'User'
-                      : controller.role() == 2
+                      : controller.role() == 3
                           ? 'Postman'
                           : 'Admin',
                   isHeading: true,
@@ -42,7 +42,7 @@ class LoginView extends GetView<AuthController> {
                   child: Icon(
                     controller.role() == 1
                         ? IconsaxBold.user_square
-                        : controller.role() == 2
+                        : controller.role() == 3
                             ? IconsaxBold.box
                             : IconsaxBold.key,
                     color: ColorsTheme.primary,
@@ -61,6 +61,7 @@ class LoginView extends GetView<AuthController> {
                     ReTextField(
                       textController: controller.textCtrlEmail(),
                       hintText: 'Please type your email here!',
+                      validator: controller.validateEmail,
                     ),
                   ],
                 ),
@@ -79,6 +80,7 @@ class LoginView extends GetView<AuthController> {
                     ReTextField(
                       textController: controller.textCtrlPassword(),
                       hintText: 'Please type your password here!',
+                      validator: controller.validatePassword,
                     ),
                   ],
                 ),
