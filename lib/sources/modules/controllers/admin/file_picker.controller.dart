@@ -5,7 +5,7 @@ import 'package:get/get.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:skripsi_kos_app/sources/services/admin.service.dart';
 
-class ImagePickerController extends GetxController {
+class FilePickerController extends GetxController {
   @override
   void onInit() {
     // TODO: implement onInit

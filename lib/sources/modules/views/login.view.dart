@@ -90,6 +90,12 @@ class LoginView extends GetView<AuthController> {
                 ReElevatedButton(
                   onPressed: () {
                     controller.signIn();
+                    Get.dialog(
+                      const Center(
+                        child: CircularProgressIndicator(),
+                      ),
+                      barrierDismissible: false,
+                    );
                   },
                   child: const ReText(
                     text: 'Sign In',

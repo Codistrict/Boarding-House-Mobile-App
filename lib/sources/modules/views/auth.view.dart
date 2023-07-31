@@ -18,7 +18,7 @@ class AuthView extends GetView<AuthController> {
         if (controller.role() == 1) {
           return const UserNavigationView();
         } else if (controller.role() == 2) {
-          ImagePickerBinding().dependencies();
+          FilePickerBinding().dependencies();
           return AdminNavigationView();
         } else {
           TextScannerBinding().dependencies();

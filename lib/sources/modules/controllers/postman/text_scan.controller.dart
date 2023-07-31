@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:flutter/material.dart';
 import 'package:google_mlkit_text_recognition/google_mlkit_text_recognition.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
@@ -40,6 +41,12 @@ class TextScannerController extends GetxController {
     photo = await picker.pickImage(source: ImageSource.camera);
     if (photo != null) {
       scanImage();
+      Get.dialog(
+        const Center(
+          child: CircularProgressIndicator(),
+        ),
+        barrierDismissible: false,
+      );
     } else {
       Get.snackbar('Error', 'Failed to pick image');
     }
@@ -51,11 +58,19 @@ class TextScannerController extends GetxController {
 
       final inputImage = InputImage.fromFile(file);
 
-      final recognizedText = await textRecognizer().processImage(inputImage);
+      final recognizedText =
+          await textRecognizer().processImage(inputImage).whenComplete(
+                () => Get.back(),
+              );
 
-      Get.toNamed(
-        '/postman/scanner',
-        parameters: {'text': recognizedText.text},
+      Future.delayed(
+        const Duration(milliseconds: 500),
+        () {
+          Get.toNamed(
+            '/postman/scanner',
+            parameters: {'text': recognizedText.text},
+          );
+        },
       );
     } catch (e) {
       Get.snackbar('Error', 'An error occured when scanning text');

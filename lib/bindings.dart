@@ -26,10 +26,10 @@ class TextScannerBinding extends Bindings {
   }
 }
 
-class ImagePickerBinding extends Bindings {
+class FilePickerBinding extends Bindings {
   @override
   void dependencies() {
     // TODO: implement dependencies
-    Get.lazyPut(() => ImagePickerController(), fenix: true);
+    Get.lazyPut(() => FilePickerController(), fenix: true);
   }
 }

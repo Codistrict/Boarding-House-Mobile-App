@@ -15,6 +15,5 @@ class NavController extends GetxController {
   }
 
   final ctrlAuth = Get.find<AuthController>();
-  final imagePickerController = Get.find<ImagePickerController>();
   Rx<int> selectedIndex = 0.obs;
 }

@@ -73,30 +73,36 @@ class AuthController extends GetxController {
       textCtrlPassword().text.trim(),
     );
 
-    response = await authService.signIn(
-      role(),
-      textCtrlEmail().text.trim(),
-      encrypted.trim(),
-    );
+    response = await authService
+        .signIn(
+          role(),
+          textCtrlEmail().text.trim(),
+          role() != 1 ? encrypted.trim() : textCtrlPassword().text.trim(),
+        )
+        .whenComplete(
+          () => Get.back(),
+        );
 
-    if (response[0] == 200) {
-      session(true);
-      uid(response[2]['id']);
-      buildingId(response[2]['building_id']);
-      setPref(uid(), session(), role(), buildingId());
+    Future.delayed(const Duration(milliseconds: 500)).then((value) {
+      if (response[0] == 200) {
+        session(true);
+        uid(response[2]['id']);
+        buildingId(response[2]['building_id']);
+        setPref(uid(), session(), role(), buildingId());
 
-      if (role() == 1) {
-        // User Not Sign Up
-      } else if (role() == 3) {
-        Get.offAllNamed('/postman/nav');
+        if (role() == 1) {
+          Get.offAllNamed('/user/nav');
+        } else if (role() == 3) {
+          Get.offAllNamed('/postman/nav');
+        } else {
+          Get.offAllNamed('/admin/nav');
+        }
+      } else if (response[0] == 404) {
+        return Get.snackbar("Error", response[1]);
       } else {
-        Get.offAllNamed('/admin/nav');
+        return Get.snackbar("Error", response);
       }
-    } else if (response[0] == 404) {
-      return Get.snackbar("Error", response[1]);
-    } else {
-      return Get.snackbar("Error", response);
-    }
+    });
 
     debugPrint(
         "Uid: $uid\nSession: $session\nRole: $role\nBuilding ID: $buildingId");
@@ -111,38 +117,51 @@ class AuthController extends GetxController {
     if (role() == 1) {
       // User Not Sign Up
     } else if (role() == 3) {
-      response = await authService.signUpPostman(
-        textCtrlName().text.trim(),
-        textCtrlEmail().text.trim(),
-        encrypted.trim(),
-      );
+      response = await authService
+          .signUpPostman(
+            textCtrlName().text.trim(),
+            textCtrlEmail().text.trim(),
+            encrypted.trim(),
+          )
+          .whenComplete(
+            () => Get.back(),
+          );
     } else {
-      response = await authService.signUpAdmin(
-        textCtrlName().text.trim(),
-        textCtrlEmail().text.trim(),
-        encrypted.trim(),
-        textCtrlBuilding().text.trim(),
-        textCtrlStreet().text.trim(),
-        textCtrlBiography().text.trim(),
-      );
+      response = await authService
+          .signUpAdmin(
+            textCtrlName().text.trim(),
+            textCtrlEmail().text.trim(),
+            encrypted.trim(),
+            textCtrlBuilding().text.trim(),
+            textCtrlStreet().text.trim(),
+            textCtrlBiography().text.trim(),
+          )
+          .whenComplete(
+            () => Get.back(),
+          );
     }
 
-    if (response[0] == 200) {
-      session(true);
-      uid("uid doko?");
-      setPref(uid(), session(), role(), buildingId());
-      if (role() == 1) {
-        // User Not Sign Up
-      } else if (role() == 3) {
-        Get.offAllNamed('/postman/nav');
+    Future.delayed(
+      const Duration(milliseconds: 500),
+    ).then((value) {
+      if (response[0] == 200) {
+        session(true);
+        uid(response[2]['id']);
+        buildingId(response[2]['building_id']);
+        setPref(uid(), session(), role(), buildingId());
+        if (role() == 1) {
+          // User Not Sign Up
+        } else if (role() == 3) {
+          Get.offAllNamed('/postman/nav');
+        } else {
+          Get.offAllNamed('/admin/nav');
+        }
+      } else if (response[0] == 404) {
+        return Get.snackbar("Error", response[1]);
       } else {
-        Get.offAllNamed('/admin/nav');
+        return Get.snackbar("Error", response);
       }
-    } else if (response[0] == 404) {
-      return Get.snackbar("Error", response[1]);
-    } else {
-      return Get.snackbar("Error", response);
-    }
+    });
     debugPrint(
         "Uid: $uid\nSession: $session\nRole: $role\nBuilding ID: $buildingId");
   }

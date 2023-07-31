@@ -94,9 +94,9 @@ class MainApp extends StatelessWidget {
             ),
             GetPage(
               name: '/admin/nav',
-              page: () => const AdminNavigationView(),
+              page: () => AdminNavigationView(),
               bindings: [
-                ImagePickerBinding(),
+                FilePickerBinding(),
               ],
             ),
             GetPage(

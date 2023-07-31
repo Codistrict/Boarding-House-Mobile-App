@@ -12,7 +12,9 @@ import '../../controllers/controllers.dart';
 import '../../views/views.dart';
 
 class AdminNavigationView extends GetView<NavController> {
-  const AdminNavigationView({super.key});
+  AdminNavigationView({super.key});
+
+  final controllerFP = Get.find<FilePickerController>();
 
   @override
   Widget build(BuildContext context) {
@@ -207,7 +209,7 @@ class AdminNavigationView extends GetView<NavController> {
               ),
               backgroundColor: ColorsTheme.secondary,
               onTap: () {
-                controller.imagePickerController.pickFile();
+                controllerFP.pickFile();
               },
               labelBackgroundColor: ColorsTheme.secondary),
           SpeedDialChild(

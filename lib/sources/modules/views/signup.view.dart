@@ -109,6 +109,12 @@ class SignUpView extends GetView<AuthController> {
                   onPressed: () {
                     if (controller.role() != 2) {
                       controller.signUp();
+                      Get.dialog(
+                        const Center(
+                          child: CircularProgressIndicator(),
+                        ),
+                        barrierDismissible: false,
+                      );
                     } else {
                       Get.toNamed('/signup/regis-building');
                     }
@@ -250,6 +256,12 @@ class RegisterBuildingView extends GetView<AuthController> {
                 ReElevatedButton(
                   onPressed: () {
                     controller.signUp();
+                    Get.dialog(
+                      const Center(
+                        child: CircularProgressIndicator(),
+                      ),
+                      barrierDismissible: false,
+                    );
                   },
                   child: const ReText(
                     text: 'Sign Up',
