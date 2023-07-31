@@ -175,7 +175,7 @@ class AuthController extends GetxController {
     debugPrint(
         "Uid: $uid\nSession: $session\nRole: $role\nBuilding ID: $buildingId");
 
-    Get.offAllNamed('/');
+    Get.offAllNamed('/auth');
   }
 
   List<String> generateSalt(value) {

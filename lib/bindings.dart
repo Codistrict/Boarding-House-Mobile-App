@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:skripsi_kos_app/sources/modules/controllers/splashscreen.controller.dart';
 
 import 'sources/modules/controllers/controllers.dart';
 
@@ -31,5 +32,14 @@ class FilePickerBinding extends Bindings {
   void dependencies() {
     // TODO: implement dependencies
     Get.lazyPut(() => FilePickerController(), fenix: true);
+  }
+}
+
+class SplashScreenBinding extends Bindings {
+  @override
+  void dependencies() {
+    // TODO: implement dependencies
+
+    Get.lazyPut(() => SplashScreenController(), fenix: true);
   }
 }

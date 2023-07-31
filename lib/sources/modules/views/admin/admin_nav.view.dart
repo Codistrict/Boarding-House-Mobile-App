@@ -25,29 +25,13 @@ class AdminNavigationView extends GetView<NavController> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Row(
-                children: [
-                  const ReText(
-                    text: 'WELCOME, Admin',
-                    isHeading: true,
-                    fontSize: 25,
-                    fontWeight: FontWeight.bold,
-                    color: ColorsTheme.primary,
-                    textAlign: TextAlign.center,
-                  ),
-                  const Spacer(),
-                  ReElevatedButton(
-                    onPressed: () {
-                      controller.ctrlAuth.signOut();
-                    },
-                    child: const ReText(
-                      text: 'Sign Out',
-                      color: ColorsTheme.onPrimary,
-                      fontSize: 16,
-                      fontWeight: FontWeight.w700,
-                    ),
-                  ),
-                ],
+              const ReText(
+                text: 'WELCOME, Admin',
+                isHeading: true,
+                fontSize: 25,
+                fontWeight: FontWeight.bold,
+                color: ColorsTheme.primary,
+                textAlign: TextAlign.center,
               ),
               const SizedBox(height: 10),
               const Divider(
@@ -84,16 +68,32 @@ class AdminNavigationView extends GetView<NavController> {
                   ),
                 ),
               ),
-              ReElevatedButton(
-                onPressed: () {
-                  Get.toNamed('/admin/resident');
-                },
-                child: const ReText(
-                  text: 'Show Resident',
-                  color: ColorsTheme.onPrimary,
-                  fontSize: 16,
-                  fontWeight: FontWeight.w700,
-                ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  ReElevatedButton(
+                    onPressed: () {
+                      Get.toNamed('/admin/resident');
+                    },
+                    child: const ReText(
+                      text: 'Show Resident',
+                      color: ColorsTheme.onPrimary,
+                      fontSize: 16,
+                      fontWeight: FontWeight.w700,
+                    ),
+                  ),
+                  ReElevatedButton(
+                    onPressed: () {
+                      controller.ctrlAuth.signOut();
+                    },
+                    child: const ReText(
+                      text: 'Sign Out',
+                      color: ColorsTheme.onPrimary,
+                      fontSize: 16,
+                      fontWeight: FontWeight.w700,
+                    ),
+                  ),
+                ],
               ),
               const ReText(
                 text: 'History',

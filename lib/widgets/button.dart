@@ -6,6 +6,7 @@ class ReElevatedButton extends StatelessWidget {
   final EdgeInsetsGeometry margin;
   final void Function()? onPressed;
   final Color backgroundColor;
+  final Color shadowColor;
   final Color disableBackgroundColor;
   final Widget? child;
   final double borderRadius;
@@ -19,7 +20,8 @@ class ReElevatedButton extends StatelessWidget {
     this.margin = const EdgeInsets.symmetric(horizontal: 4, vertical: 4),
     required this.onPressed,
     required this.child,
-    this.backgroundColor = ColorsTheme.secondary,
+    this.backgroundColor = ColorsTheme.button,
+    this.shadowColor = Colors.transparent,
     this.disableBackgroundColor = ColorsTheme.disabled,
     this.borderRadius = 24,
     this.elevation = 1.5,
@@ -38,6 +40,7 @@ class ReElevatedButton extends StatelessWidget {
       child: ElevatedButton(
         onPressed: onPressed,
         style: ElevatedButton.styleFrom(
+          shadowColor: shadowColor,
           backgroundColor: backgroundColor,
           disabledBackgroundColor: disableBackgroundColor,
           elevation: elevation,

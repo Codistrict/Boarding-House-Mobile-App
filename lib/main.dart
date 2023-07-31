@@ -4,6 +4,7 @@ import 'package:flutter_config/flutter_config.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:skripsi_kos_app/sources/modules/views/splash.view.dart';
 
 import 'bindings.dart';
 import 'sources/modules/views/views.dart';
@@ -67,6 +68,13 @@ class MainApp extends StatelessWidget {
           getPages: [
             GetPage(
               name: '/',
+              page: () => const SplashScreenView(),
+              bindings: [
+                SplashScreenBinding()
+              ]
+            ),
+            GetPage(
+              name: '/auth',
               page: () => const AuthView(),
               bindings: [
                 AuthBinding(),

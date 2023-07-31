@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class ColorsTheme {
   static const Color primary = Color(0xff3c3c3c);
-  static const Color secondary = Color(0xfff6aa26);
+  static const Color secondary = Color(0xff99D5EE);
 
   static const Color onPrimary = Color(0xfffcfcfc);
   static const Color onSecondary = Color(0xfffcfcfc);
@@ -14,6 +14,11 @@ class ColorsTheme {
   static const Color error = Color(0xffffa285);
   static const Color warning = Color(0xfffbd586);
   static const Color success = Color(0xff8ed5d4);
+
+  static const Color button = Color(0xff99D5EE);
+
+  static const Color back1 = Color.fromRGBO(154, 162, 229, 1);
+  static const Color back2 = Color.fromRGBO(186, 13, 214, 0.22);
 
   MaterialColor getMaterialColor(Color color) {
     final int red = color.red;
