@@ -14,11 +14,13 @@ class AuthView extends GetView<AuthController> {
   @override
   Widget build(BuildContext context) {
     return Obx(() {
+      
       if (controller.role() != 0 && controller.session()) {
         if (controller.role() == 1) {
           return const UserNavigationView();
         } else if (controller.role() == 2) {
           FilePickerBinding().dependencies();
+          ResidentBinding().dependencies();
           return AdminNavigationView();
         } else {
           TextScannerBinding().dependencies();

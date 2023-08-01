@@ -1,5 +1,5 @@
 import 'package:get/get.dart';
-import 'package:skripsi_kos_app/sources/modules/controllers/splashscreen.controller.dart';
+import 'package:skripsi_kos_app/sources/modules/controllers/admin/resident.controller.dart';
 
 import 'sources/modules/controllers/controllers.dart';
 
@@ -41,5 +41,14 @@ class SplashScreenBinding extends Bindings {
     // TODO: implement dependencies
 
     Get.lazyPut(() => SplashScreenController(), fenix: true);
+  }
+}
+
+class ResidentBinding extends Bindings {
+  @override
+  void dependencies() {
+    // TODO: implement dependencies
+
+    Get.lazyPut(() => ResidentController(), fenix: true);
   }
 }

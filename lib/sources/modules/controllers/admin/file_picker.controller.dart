@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:file_picker/file_picker.dart';
+import 'package:skripsi_kos_app/sources/modules/controllers/controllers.dart';
 import 'package:skripsi_kos_app/sources/services/admin.service.dart';
 
 class FilePickerController extends GetxController {
@@ -19,6 +20,7 @@ class FilePickerController extends GetxController {
   }
 
   AdminService adminService = AdminService();
+  AuthController authController = Get.find<AuthController>();
 
   Future pickFile() async {
     FilePickerResult? result = await FilePicker.platform.pickFiles(
@@ -28,7 +30,7 @@ class FilePickerController extends GetxController {
 
     if (result != null) {
       File file = File(result.files.single.path!);
-      uploadFile("bid", file.path);
+      uploadFile(authController.buildingId(), file.path);
       Get.dialog(
         const Center(
           child: CircularProgressIndicator(),

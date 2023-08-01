@@ -6,6 +6,7 @@ class NavController extends GetxController {
   void onInit() {
     // TODO: implement onInit
     super.onInit();
+    ctrlAuth.getPref();
   }
 
   @override

@@ -69,9 +69,7 @@ class MainApp extends StatelessWidget {
             GetPage(
               name: '/',
               page: () => const SplashScreenView(),
-              bindings: [
-                SplashScreenBinding()
-              ]
+              binding: SplashScreenBinding(),
             ),
             GetPage(
               name: '/auth',
@@ -114,6 +112,7 @@ class MainApp extends StatelessWidget {
             GetPage(
               name: '/admin/resident',
               page: () => const AdminResidentNavigationView(),
+              binding: ResidentBinding(),
             ),
             GetPage(
               name: '/admin/detail',

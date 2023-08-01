@@ -46,11 +46,9 @@ class AdminService {
   }
 
   // Delete Resident
-  Future deleteResident(residentiId) async {
-    var url = Uri.parse('$path/UM/delete-resident');
-    final response = await http.delete(url, body: {
-      'residentid': residentiId,
-    });
+  Future deleteResident(residentId) async {
+    var url = Uri.parse('$path/UM/delete-resident?residentid=$residentId');
+    final response = await http.delete(url);
     if (response.statusCode == 200) {
       var status = json.decode(response.body)['status'];
       var message = json.decode(response.body)['message'];
