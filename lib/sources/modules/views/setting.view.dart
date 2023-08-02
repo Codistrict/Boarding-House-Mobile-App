@@ -1,17 +1,9 @@
-import 'dart:ui';
-
-import 'package:ficonsax/ficonsax.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 import 'package:get/get.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 import 'package:skripsi_kos_app/widgets/widgets.dart';
-import '../../../../themes/colors/colors.dart';
-import '../../controllers/controllers.dart';
-import '../../views/views.dart';
-
-bool cekEditBuilding= false;
+import '../../../themes/colors/colors.dart';
+import '../controllers/controllers.dart';
 
 class SettingNavigationView extends GetView<NavController> {
   const SettingNavigationView({super.key});
@@ -103,7 +95,7 @@ class SettingNavigationView extends GetView<NavController> {
                     height: 16,
                   ),
                   Visibility(
-                    visible: cekEditBuilding,
+                    visible: controller.ctrlAuth.role() == 2 ? true : false,
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisSize: MainAxisSize.min,
@@ -118,8 +110,8 @@ class SettingNavigationView extends GetView<NavController> {
                           title: const ReText(
                             text: '',
                             fontWeight: FontWeight.w600,
-                            margin:
-                                EdgeInsets.symmetric(vertical: 2, horizontal: 12),
+                            margin: EdgeInsets.symmetric(
+                                vertical: 2, horizontal: 12),
                           ),
                           children: <Widget>[
                             ListTile(
@@ -142,7 +134,8 @@ class SettingNavigationView extends GetView<NavController> {
                                               vertical: 2, horizontal: 12),
                                         ),
                                         ReTextField(
-                                          textController: TextEditingController(),
+                                          textController:
+                                              TextEditingController(),
                                           hintText:
                                               'Please type your new building name here!',
                                         ),
@@ -163,7 +156,8 @@ class SettingNavigationView extends GetView<NavController> {
                                               vertical: 2, horizontal: 12),
                                         ),
                                         ReTextField(
-                                          textController: TextEditingController(),
+                                          textController:
+                                              TextEditingController(),
                                           hintText:
                                               'Please type your your street here!',
                                         ),
@@ -184,7 +178,8 @@ class SettingNavigationView extends GetView<NavController> {
                                               vertical: 2, horizontal: 12),
                                         ),
                                         ReTextField(
-                                          textController: TextEditingController(),
+                                          textController:
+                                              TextEditingController(),
                                           hintText:
                                               'Please type your new building number here!',
                                         ),
@@ -203,36 +198,36 @@ class SettingNavigationView extends GetView<NavController> {
                     ),
                   ),
                   const SizedBox(height: 35),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            ReElevatedButton(
-                              padding: const EdgeInsets.fromLTRB(25, 5, 25, 5),
-                              onPressed: () {
-                                controller.ctrlAuth.signOut();
-                              },
-                              child: const ReText(
-                                text: 'Save',
-                                color: ColorsTheme.onPrimary,
-                                fontSize: 16,
-                                fontWeight: FontWeight.w700,
-                              ),
-                            ),
-                            ReElevatedButton(
-                              padding: const EdgeInsets.fromLTRB(25, 5, 25, 5),
-                              onPressed: () {
-                                controller.ctrlAuth.signOut();
-                              },
-                              backgroundColor: ColorsTheme.primary,
-                              child: const ReText(
-                                text: 'Cancel',
-                                color: ColorsTheme.onPrimary,
-                                fontSize: 16,
-                                fontWeight: FontWeight.w700,
-                              ),
-                            ),
-                          ],
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      ReElevatedButton(
+                        padding: const EdgeInsets.fromLTRB(25, 5, 25, 5),
+                        onPressed: () {
+                          controller.ctrlAuth.signOut();
+                        },
+                        child: const ReText(
+                          text: 'Save',
+                          color: ColorsTheme.onPrimary,
+                          fontSize: 16,
+                          fontWeight: FontWeight.w700,
                         ),
+                      ),
+                      ReElevatedButton(
+                        padding: const EdgeInsets.fromLTRB(25, 5, 25, 5),
+                        onPressed: () {
+                          controller.ctrlAuth.signOut();
+                        },
+                        backgroundColor: ColorsTheme.primary,
+                        child: const ReText(
+                          text: 'Cancel',
+                          color: ColorsTheme.onPrimary,
+                          fontSize: 16,
+                          fontWeight: FontWeight.w700,
+                        ),
+                      ),
+                    ],
+                  ),
                   const SizedBox(height: 35),
                   ReElevatedButton(
                     onPressed: () {

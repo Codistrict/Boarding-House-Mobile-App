@@ -117,7 +117,7 @@ class MainApp extends StatelessWidget {
               binding: ResidentBinding(),
             ),
             GetPage(
-              name: '/admin/detail',
+              name: '/package/detail',
               page: () => const DetailTransactionNavigationView(),
             ),
             GetPage(
