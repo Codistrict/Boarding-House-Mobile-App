@@ -9,9 +9,6 @@ import 'package:skripsi_kos_app/sources/modules/views/splash.view.dart';
 import 'bindings.dart';
 import 'sources/modules/views/views.dart';
 
-// Run after flutter clean
-// dart run flutter_native_splash:create --path=flutter_native_splash.yaml
-
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await FlutterConfig.loadEnvVariables();
@@ -90,11 +87,15 @@ class MainApp extends StatelessWidget {
             GetPage(
               name: '/user/nav',
               page: () => const UserNavigationView(),
+              bindings: [
+                PackageBinding(),
+              ],
             ),
             GetPage(
               name: '/postman/nav',
               page: () => PostmanNavigationView(),
               bindings: [
+                PackageBinding(),
                 TextScannerBinding(),
               ],
             ),
@@ -102,6 +103,7 @@ class MainApp extends StatelessWidget {
               name: '/admin/nav',
               page: () => AdminNavigationView(),
               bindings: [
+                PackageBinding(),
                 FilePickerBinding(),
               ],
             ),

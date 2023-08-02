@@ -1,3 +1,3 @@
 export 'auth.service.dart';
-export 'admin.service.dart';
-export 'postman.service.dart';
+export 'resident.service.dart';
+export 'package.service.dart';

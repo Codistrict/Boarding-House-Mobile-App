@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:skripsi_kos_app/sources/modules/controllers/controllers.dart';
-import 'package:skripsi_kos_app/sources/services/admin.service.dart';
+import 'package:skripsi_kos_app/sources/services/resident.service.dart';
 
 class FilePickerController extends GetxController {
   @override
@@ -19,7 +19,7 @@ class FilePickerController extends GetxController {
     super.onClose();
   }
 
-  AdminService adminService = AdminService();
+  ResidentService residentService = ResidentService();
   AuthController authController = Get.find<AuthController>();
 
   Future pickFile() async {
@@ -43,9 +43,10 @@ class FilePickerController extends GetxController {
   }
 
   Future uploadFile(buildingId, file) async {
-    var response = await adminService.uploadCSV(buildingId, file).whenComplete(
-          () => Get.back(),
-        );
+    var response =
+        await residentService.uploadCSV(buildingId, file).whenComplete(
+              () => Get.back(),
+            );
 
     if (response[0] == 200) {
       return Get.snackbar("Success", response[1]);

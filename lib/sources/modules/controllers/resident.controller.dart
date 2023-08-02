@@ -1,7 +1,7 @@
 import 'package:get/get.dart';
 
-import '../../../services/services.dart';
-import '../controllers.dart';
+import '../../services/services.dart';
+import 'controllers.dart';
 
 class ResidentController extends GetxController {
   @override
@@ -10,7 +10,7 @@ class ResidentController extends GetxController {
     super.onInit();
 
     listResident =
-        adminService.readAllResident(authController.buildingId()).obs;
+        residentService.readAllResident(authController.buildingId()).obs;
   }
 
   @override
@@ -19,13 +19,13 @@ class ResidentController extends GetxController {
     super.onClose();
   }
 
-  AdminService adminService = AdminService();
+  ResidentService residentService = ResidentService();
   final authController = Get.find<AuthController>();
 
   late Rx<Future> listResident;
 
   Future delResident(residentId) async {
-    var response = await adminService.deleteResident(residentId).whenComplete(
+    var response = await residentService.deleteResident(residentId).whenComplete(
       () {
         Get.back();
         Get.back();
@@ -34,7 +34,7 @@ class ResidentController extends GetxController {
 
     if (response[0] == 200) {
       listResident.value =
-          adminService.readAllResident(authController.buildingId());
+          residentService.readAllResident(authController.buildingId());
     } else if (response[0] == 404) {
       return Get.snackbar("Error", response[1]);
     } else {

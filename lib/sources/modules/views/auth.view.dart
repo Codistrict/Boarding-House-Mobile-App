@@ -14,8 +14,8 @@ class AuthView extends GetView<AuthController> {
   @override
   Widget build(BuildContext context) {
     return Obx(() {
-      
       if (controller.role() != 0 && controller.session()) {
+        PackageBinding().dependencies();
         if (controller.role() == 1) {
           return const UserNavigationView();
         } else if (controller.role() == 2) {

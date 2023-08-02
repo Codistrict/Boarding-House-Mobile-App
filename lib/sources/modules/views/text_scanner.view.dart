@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../../../themes/colors/colors.dart';
-import '../../../../widgets/text.dart';
+import '../../../themes/colors/colors.dart';
+import '../../../widgets/text.dart';
 
 class TextScannerView extends StatelessWidget {
   const TextScannerView({super.key});

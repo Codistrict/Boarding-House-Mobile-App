@@ -1,5 +1,4 @@
 import 'package:get/get.dart';
-import 'package:skripsi_kos_app/sources/modules/controllers/admin/resident.controller.dart';
 
 import 'sources/modules/controllers/controllers.dart';
 
@@ -50,5 +49,14 @@ class ResidentBinding extends Bindings {
     // TODO: implement dependencies
 
     Get.lazyPut(() => ResidentController(), fenix: true);
+  }
+}
+
+class PackageBinding extends Bindings {
+  @override
+  void dependencies() {
+    // TODO: implement dependencies
+
+    Get.lazyPut(() => PackageController(), fenix: true);
   }
 }

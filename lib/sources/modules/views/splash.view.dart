@@ -3,10 +3,7 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../../../themes/colors/colors.dart';
 
-import '../../../widgets/button.dart';
 import '../controllers/splashscreen.controller.dart';
-import 'asset_loader_widget.dart';
-import 'views.dart';
 
 class SplashScreenView extends GetView<SplashScreenController> {
   const SplashScreenView({super.key});

@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:flutter_config/flutter_config.dart';
 
-class AdminService {
+class ResidentService {
   final path = FlutterConfig.get('API_PATH');
 
   // Upload CSV
