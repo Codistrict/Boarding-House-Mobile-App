@@ -8,22 +8,12 @@ class PackageController extends GetxController {
     // TODO: implement onInit
     super.onInit();
 
-    if (authController.role() == 1) {
-      listPackage =
-          packageService.readPackage(authController.uid(), '', '').obs;
-      listPackageHistory =
-          packageService.readPackageHistory(authController.uid(), '', '').obs;
-    } else if (authController.role() == 2) {
-      listPackage =
-          packageService.readPackage('', authController.uid(), '').obs;
-      listPackageHistory =
-          packageService.readPackageHistory('', authController.uid(), '').obs;
-    } else if (authController.role() == 3) {
-      listPackage =
-          packageService.readPackage('', '', authController.uid()).obs;
-      listPackageHistory =
-          packageService.readPackageHistory('', '', authController.uid()).obs;
-    }
+    listPackage = packageService
+        .readPackage(authController.uid(), authController.role())
+        .obs;
+    listPackageHistory = packageService
+        .readPackageHistory(authController.uid(), authController.role())
+        .obs;
   }
 
   @override

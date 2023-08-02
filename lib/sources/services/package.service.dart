@@ -30,12 +30,10 @@ class PackageService {
 
   // Read Package
   Future readPackage(
-    residentId,
-    adminId,
-    postmanId,
+    id,
+    status,
   ) async {
-    var url = Uri.parse(
-        '$path/PCK/read-package?resident_id=$residentId&admin_id=$adminId&postman_id=$postmanId');
+    var url = Uri.parse('$path/PCK/read-package?id=$id&status=$status');
     final response = await http.get(url);
     if (response.statusCode == 200) {
       var status = json.decode(response.body)['status'];
@@ -49,12 +47,10 @@ class PackageService {
 
   // Read Package His
   Future readPackageHistory(
-    residentId,
-    adminId,
-    postmanId,
+    id,
+    status,
   ) async {
-    var url = Uri.parse(
-        '$path/PCK/read-package-his?resident_id=$residentId&admin_id=$adminId&postman_id=$postmanId');
+    var url = Uri.parse('$path/PCK/read-package-his?id=$id&status=$status');
     final response = await http.get(url);
     if (response.statusCode == 200) {
       var status = json.decode(response.body)['status'];
