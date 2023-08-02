@@ -125,8 +125,16 @@ class MainApp extends StatelessWidget {
               page: () => const PostmanFormPageNavigationView(),
             ),
             GetPage(
+              name: '/admin/form',
+              page: () => const AdminFormPageNavigationView(),
+            ),
+            GetPage(
               name: '/postman/scanner',
               page: () => const TextScannerView(),
+            ),
+            GetPage(
+              name: '/sett',
+              page: () => const SettingNavigationView(),
             ),
           ],
         );

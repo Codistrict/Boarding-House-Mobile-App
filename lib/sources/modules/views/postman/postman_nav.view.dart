@@ -42,7 +42,7 @@ class PostmanNavigationView extends GetView<NavController> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   const ReText(
-                    text: 'History',
+                    text: 'On Progress',
                     isHeading: true,
                     fontSize: 18,
                     fontWeight: FontWeight.bold,
@@ -61,6 +61,84 @@ class PostmanNavigationView extends GetView<NavController> {
                     ),
                   ),
                 ],
+              ),
+              const SizedBox(height: 10),
+              Expanded(
+                child: ScrollConfiguration(
+                  behavior: ScrollConfiguration.of(context).copyWith(
+                    dragDevices: {
+                      PointerDeviceKind.mouse,
+                      PointerDeviceKind.touch
+                    },
+                  ),
+                  child: ListView.builder(
+                    shrinkWrap: true,
+                    scrollDirection: Axis.vertical,
+                    controller: ScrollController(),
+                    physics: const ClampingScrollPhysics(),
+                    itemCount: 5,
+                    itemBuilder: (context, index) {
+                      return GestureDetector(
+                        onTap: () {
+                                Get.toNamed('/admin/detail');
+                              },
+                        child: Card(
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10),
+                            side: const BorderSide(color: ColorsTheme.secondary),
+                          ),
+                          color: ColorsTheme.onPrimary,
+                          child: const ListTile(
+                            title: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    ReText(
+                                      text: 'SPX000111*******',
+                                      isHeading: true,
+                                      fontSize: 17,
+                                      fontWeight: FontWeight.w400,
+                                      color: ColorsTheme.primary,
+                                      textAlign: TextAlign.center,
+                                    ),
+                                    SizedBox(height: 5),
+                                    ReText(
+                                      text: 'Siomay Street, 43 no. 25',
+                                      isHeading: true,
+                                      fontSize: 13,
+                                      fontWeight: FontWeight.w400,
+                                      color: ColorsTheme.primary,
+                                      textAlign: TextAlign.center,
+                                    ),
+                                  ],
+                                ),
+                                ReText(
+                                  text: 'On The Way',
+                                  isHeading: true,
+                                  fontSize: 17,
+                                  fontWeight: FontWeight.w800,
+                                  color: ColorsTheme.primary,
+                                  textAlign: TextAlign.center,
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      );
+                    },
+                  ),
+                ),
+              ),
+              SizedBox(height: 20),
+              const ReText(
+                text: 'History',
+                isHeading: true,
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
+                color: ColorsTheme.primary,
+                textAlign: TextAlign.center,
               ),
               const SizedBox(height: 10),
               Expanded(
