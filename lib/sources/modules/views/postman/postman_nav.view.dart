@@ -65,7 +65,7 @@ class PostmanNavigationView extends GetView<NavController> {
               ),
               backgroundColor: ColorsTheme.secondary,
               onTap: () {
-                Get.toNamed('/postman/form');
+                Get.toNamed('/package/form', parameters: {'isEdit': 'false'});
               },
               labelBackgroundColor: ColorsTheme.secondary),
         ],

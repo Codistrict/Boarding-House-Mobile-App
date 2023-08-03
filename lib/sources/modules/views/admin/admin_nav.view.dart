@@ -2,7 +2,6 @@ import 'package:ficonsax/ficonsax.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 import 'package:get/get.dart';
-import 'package:skripsi_kos_app/sources/modules/views/admin/admin_home.view.dart';
 
 import 'package:skripsi_kos_app/widgets/widgets.dart';
 import '../../../../themes/colors/colors.dart';
@@ -75,7 +74,7 @@ class AdminNavigationView extends GetView<NavController> {
               ),
               backgroundColor: ColorsTheme.secondary,
               onTap: () {
-                Get.toNamed('/admin/form');
+                Get.toNamed('/package/form', parameters: {'isEdit': 'false'});
               },
               labelBackgroundColor: ColorsTheme.secondary),
           SpeedDialChild(

@@ -28,6 +28,28 @@ class PackageService {
     }
   }
 
+  // update Package
+  Future updatePackage(
+      packageId, noResi, name, streetName, buildingName, roomNumber) async {
+    var url = Uri.parse('$path/PCK/update-data-package');
+    final response = await http.put(url, body: {
+      'package_id': packageId,
+      'no_resi': noResi,
+      'name': name,
+      'street_name': streetName,
+      'building_name': buildingName,
+      'room_number': roomNumber,
+    });
+    if (response.statusCode == 200) {
+      var status = json.decode(response.body)['status'];
+      var message = json.decode(response.body)['message'];
+      var body = json.decode(response.body)['data'];
+      return [status, message, body];
+    } else {
+      return "Couldn't connect to the server, failed to fetch API!";
+    }
+  }
+
   // Read Package
   Future readPackage(
     id,
