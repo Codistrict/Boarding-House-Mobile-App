@@ -24,7 +24,11 @@ dependencies:
   http: ^1.1.0
   image_picker: ^1.0.1
   intl: ^0.18.1
+
+  
+  maps_launcher: ^2.2.0
   permission_handler: ^10.4.1
+  url_launcher: ^6.1.12
 
 dev_dependencies:
   flutter_lints: ^2.0.0

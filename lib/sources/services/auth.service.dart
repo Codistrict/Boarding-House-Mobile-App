@@ -60,4 +60,81 @@ class AuthService {
       return "Couldn't connect to the server, failed to fetch API!";
     }
   }
+
+  // Get Profile
+  Future getProfile(id, role) async {
+    var url = Uri.parse('$path/UM/see-profile?id=$id&status=$role');
+    final response = await http.get(url);
+    if (response.statusCode == 200) {
+      var status = json.decode(response.body)['status'];
+      var message = json.decode(response.body)['message'];
+      var body = json.decode(response.body)['data'];
+      return [status, message, body];
+    } else {
+      return "Couldn't connect to the server, failed to fetch API!";
+    }
+  }
+
+  // Update Profile resident
+  Future updateProfileResident(id, name, surname, email, password) async {
+    var url = Uri.parse('$path/UM/update-profile-res');
+    final response = await http.put(url, body: {
+      'residentid': id,
+      'name': name,
+      'surname': surname,
+      'email': email,
+      'password': password,
+    });
+    if (response.statusCode == 200) {
+      var status = json.decode(response.body)['status'];
+      var message = json.decode(response.body)['message'];
+      var body = json.decode(response.body)['data'];
+      return [status, message, body];
+    } else {
+      return "Couldn't connect to the server, failed to fetch API!";
+    }
+  }
+
+  // Update Profile Admin
+  Future updateProfileAdmin(
+      id, buildingId, name, email, password, buildingName, address, bio) async {
+    var url = Uri.parse('$path/UM/update-profile-adm');
+    final response = await http.put(url, body: {
+      'admin_id': id,
+      'building_id': buildingId,
+      'name': name,
+      'email': email,
+      'password': password,
+      'BuildingName': buildingName,
+      'Address': address,
+      'Biography': bio,
+    });
+    if (response.statusCode == 200) {
+      var status = json.decode(response.body)['status'];
+      var message = json.decode(response.body)['message'];
+      var body = json.decode(response.body)['data'];
+      return [status, message, body];
+    } else {
+      return "Couldn't connect to the server, failed to fetch API!";
+    }
+  }
+
+  // Update Profile Postman
+  Future updateProfilePostman(id, name, email, password) async {
+    var url = Uri.parse('$path/UM/update-profile-pos');
+    final response = await http.put(url, body: {
+      'postman_id': id,
+      'name': name,
+      'email': email,
+      'password': password,
+    });
+    if (response.statusCode == 200) {
+      var status = json.decode(response.body)['status'];
+      var message = json.decode(response.body)['message'];
+      var body = json.decode(response.body)['data'];
+      return [status, message, body];
+    } else {
+      return "Couldn't connect to the server, failed to fetch API!";
+    }
+  }
 }

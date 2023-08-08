@@ -63,6 +63,13 @@ class TextScannerController extends GetxController {
                 () => Get.back(),
               );
 
+      // List<String> text = [];
+      // recognizedText.text.split('\n').forEach((element) {
+      //   text.add('ln- $element');
+      // });
+
+      // debugPrint('$text');
+
       Future.delayed(
         const Duration(milliseconds: 500),
         () {

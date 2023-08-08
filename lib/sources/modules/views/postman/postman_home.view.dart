@@ -62,6 +62,8 @@ class PostmanHomeView extends GetView<NavController> {
             ),
           ),
           const SizedBox(height: 20),
+
+          const SizedBox(height: 20),
           const ReText(
             text: 'History',
             isHeading: true,

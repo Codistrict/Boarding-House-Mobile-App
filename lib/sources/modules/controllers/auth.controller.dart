@@ -23,6 +23,8 @@ class AuthController extends GetxController {
     textCtrlEmail().dispose();
     textCtrlPassword().dispose();
 
+    textCtrlSurname().dispose();
+
     textCtrlBuilding().dispose();
     textCtrlStreet().dispose();
     textCtrlBiography().dispose();
@@ -38,9 +40,13 @@ class AuthController extends GetxController {
   Rx<int> role = 0.obs;
   Rx<String> buildingId = "".obs;
 
+  Rx<Future> profile = Future.value().obs;
+
   Rx<TextEditingController> textCtrlName = TextEditingController().obs;
   Rx<TextEditingController> textCtrlEmail = TextEditingController().obs;
   Rx<TextEditingController> textCtrlPassword = TextEditingController().obs;
+
+  Rx<TextEditingController> textCtrlSurname = TextEditingController().obs;
 
   Rx<TextEditingController> textCtrlBuilding = TextEditingController().obs;
   Rx<TextEditingController> textCtrlStreet = TextEditingController().obs;
@@ -221,5 +227,76 @@ class AuthController extends GetxController {
       return 'Password must be at least 6 characters';
     }
     return null;
+  }
+
+  Future getProfile(uid, role) async {
+    profile(
+      authService.getProfile(uid, role),
+    ).obs;
+  }
+
+  void setControllerProfile(data) {
+    textCtrlName().text = data['name'];
+    textCtrlEmail().text = data['email'];
+    textCtrlPassword().text = data['password'];
+    if (role() == 1) {
+      textCtrlSurname().text = data['surname'];
+    }
+    if (role() == 2) {
+      textCtrlBuilding().text = data['building_name'];
+      textCtrlStreet().text = data['address'];
+      textCtrlBiography().text = data['biography'];
+    }
+  }
+
+  Future updateProfile() async {
+    var response;
+    if (role() == 1) {
+      response = await authService
+          .updateProfileResident(
+            uid(),
+            textCtrlName().text,
+            textCtrlSurname().text,
+            textCtrlEmail().text,
+            textCtrlPassword().text,
+          )
+          .whenComplete(
+            () => Get.back(),
+          );
+    } else if (role() == 2) {
+      response = await authService
+          .updateProfileAdmin(
+            uid(),
+            buildingId(),
+            textCtrlName().text,
+            textCtrlEmail().text,
+            textCtrlPassword().text,
+            textCtrlBuilding().text,
+            textCtrlStreet().text,
+            textCtrlBiography().text,
+          )
+          .whenComplete(
+            () => Get.back(),
+          );
+    } else if (role() == 3) {}
+    response = await authService
+        .updateProfilePostman(
+          uid(),
+          textCtrlName().text,
+          textCtrlEmail().text,
+          textCtrlPassword().text,
+        )
+        .whenComplete(
+          () => Get.back(),
+        );
+
+    if (response[0] == 200) {
+      getProfile(uid, role);
+      return Get.snackbar("Success", response[1]);
+    } else if (response[0] == 404) {
+      return Get.snackbar("Error", response[1]);
+    } else {
+      return Get.snackbar("Error", response);
+    }
   }
 }

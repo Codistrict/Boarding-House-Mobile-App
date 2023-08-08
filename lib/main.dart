@@ -97,6 +97,7 @@ class MainApp extends StatelessWidget {
               bindings: [
                 PackageBinding(),
                 TextScannerBinding(),
+                UrlLaunchierBinding(),
               ],
             ),
             GetPage(

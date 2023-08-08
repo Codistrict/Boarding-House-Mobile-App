@@ -24,6 +24,7 @@ class AuthView extends GetView<AuthController> {
           return AdminNavigationView();
         } else {
           TextScannerBinding().dependencies();
+          UrlLaunchierBinding().dependencies();
           return PostmanNavigationView();
         }
       } else {

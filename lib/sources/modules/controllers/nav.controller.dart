@@ -7,6 +7,7 @@ class NavController extends GetxController {
     // TODO: implement onInit
     super.onInit();
     ctrlAuth.getPref();
+    ctrlAuth.getProfile(ctrlAuth.uid(), ctrlAuth.role());
   }
 
   @override
