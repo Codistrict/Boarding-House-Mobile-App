@@ -35,7 +35,25 @@ class TextScannerView extends StatelessWidget {
       ),
       body: Container(
         padding: const EdgeInsets.all(30.0),
-        child: Text(Get.parameters['text']!),
+        child: Column(
+          children: [
+            Text(
+              'Resi no. ${Get.parameters['resi']}',
+            ),
+            Text(
+              'Recipient: ${Get.parameters['recipient']}',
+            ),
+            Text(
+              '${Get.parameters['building']}',
+            ),
+            Text(
+              '${Get.parameters['address']}',
+            ),
+            Text(
+              'Room no. ${Get.parameters['room']}',
+            ),
+          ],
+        ),
       ),
     );
   }

@@ -1,10 +1,11 @@
 import 'dart:convert';
 
 import 'package:http/http.dart' as http;
-import 'package:flutter_config/flutter_config.dart';
+
+import 'services.dart';
 
 class AuthService {
-  final path = FlutterConfig.get('API_PATH');
+  final path = apiPath;
 
   // SignIn
   Future signIn(role, email, password) async {

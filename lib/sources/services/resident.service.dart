@@ -1,10 +1,11 @@
 import 'dart:convert';
 
 import 'package:http/http.dart' as http;
-import 'package:flutter_config/flutter_config.dart';
+
+import 'services.dart';
 
 class ResidentService {
-  final path = FlutterConfig.get('API_PATH');
+  final path = apiPath;
 
   // Upload CSV
   Future uploadCSV(buildingId, file) async {

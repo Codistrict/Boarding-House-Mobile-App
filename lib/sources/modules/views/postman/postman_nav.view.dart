@@ -54,7 +54,7 @@ class PostmanNavigationView extends GetView<NavController> {
                 color: ColorsTheme.onPrimary,
               ),
               backgroundColor: ColorsTheme.secondary,
-              onTap: () => controllerTS.openCamera(),
+              onTap: () => controllerTS.openCamera(context),
               labelBackgroundColor: ColorsTheme.secondary),
           // FAB 2
           SpeedDialChild(

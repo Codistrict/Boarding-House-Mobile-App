@@ -12,6 +12,8 @@ class AdminNavigationView extends GetView<NavController> {
   AdminNavigationView({super.key});
 
   final controllerFP = Get.find<FilePickerController>();
+  final controllerTS = Get.find<TextScannerController>();
+
 
   @override
   Widget build(BuildContext context) {
@@ -84,7 +86,7 @@ class AdminNavigationView extends GetView<NavController> {
                 color: ColorsTheme.onPrimary,
               ),
               backgroundColor: ColorsTheme.secondary,
-              onTap: () {},
+              onTap: () => controllerTS.openCamera(context),
               labelBackgroundColor: ColorsTheme.secondary),
         ],
       ),

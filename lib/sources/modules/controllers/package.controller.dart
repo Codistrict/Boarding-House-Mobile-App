@@ -111,6 +111,7 @@ class PackageController extends GetxController {
 
     if (response[0] == 200) {
       getPackage();
+      Get.back();
       Future.delayed(const Duration(milliseconds: 500)).then((value) {
         return Get.snackbar("Success", response[1]);
       });
@@ -173,7 +174,10 @@ class PackageController extends GetxController {
     if (response[0] == 200) {
       getPackage();
       if (authController.role() == 2) {
-        await checkResident(context, response[0], '', this);
+        Get.dialog(
+          checkResident(response[0], '', this),
+        );
+
         Get.back();
       } else {
         Get.back();
@@ -183,8 +187,9 @@ class PackageController extends GetxController {
       }
     } else if (response[0] == 404) {
       if (authController.role() == 2) {
-        await checkResident(
-            context, response[0], response[2]['package_id'], this);
+        Get.dialog(
+          checkResident(response[0], response[2]['id_package'], this),
+        );
       } else {
         return Get.snackbar("Error", response[1]);
       }
@@ -206,5 +211,14 @@ class PackageController extends GetxController {
     textCtrlStreet.clear();
     textCtrlBuildingName.clear();
     textCtrlRoomNum.clear();
+  }
+
+  void setControllerData(data) async {
+    textCtrlNoResi.text = data['resi'];
+    textCtrlName.text = data['recipient'];
+    textCtrlStreet.text = data['address'];
+    textCtrlBuildingName.text = data['building'];
+    textCtrlRoomNum.text = data['room'];
+    Get.toNamed('/package/form', parameters: {'isEdit': 'false'});
   }
 }

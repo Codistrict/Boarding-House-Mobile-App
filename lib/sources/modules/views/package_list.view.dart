@@ -243,26 +243,14 @@ class DetailTransactionNavigationView extends GetView<NavController> {
                                     ),
                                     Align(
                                       alignment: Alignment.topRight,
-                                      child: ReElevatedButton(
+                                      child: IconButton(
                                         onPressed: () {
                                           MapsLauncher.launchQuery(
                                               '${snapData[2][0]['street_name']}');
                                         },
-                                        child: const Row(
-                                          mainAxisSize: MainAxisSize.min,
-                                          children: [
-                                            Icon(
-                                              IconsaxBold.map,
-                                              color: ColorsTheme.onPrimary,
-                                            ),
-                                            ReText(
-                                              text: 'Open Map',
-                                              color: ColorsTheme.onPrimary,
-                                              margin: EdgeInsets.only(
-                                                left: 5,
-                                              ),
-                                            ),
-                                          ],
+                                        icon: const Icon(
+                                          IconsaxBold.map,
+                                          color: ColorsTheme.button,
                                         ),
                                       ),
                                     ),
@@ -624,120 +612,104 @@ class FormPageNavigationView extends GetView<NavController> {
   }
 }
 
-Future checkResident(
-    context, response, packageId, PackageController controller) async {
-  return showDialog(
-    barrierDismissible: false,
-    useRootNavigator: true,
-    context: context,
-    builder: (context) {
-      return StatefulBuilder(
-        builder: (context, setState) {
-          return Dialog(
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(15),
+Widget checkResident(response, packageId, PackageController controller) {
+  return Dialog(
+    shape: RoundedRectangleBorder(
+      borderRadius: BorderRadius.circular(15),
+    ),
+    child: SingleChildScrollView(
+      physics: const ClampingScrollPhysics(),
+      controller: ScrollController(),
+      child: Container(
+        padding: const EdgeInsets.only(top: 20),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            response != 404 ? const Icon(Icons.check) : const Icon(Icons.close),
+            const SizedBox(
+              height: 20,
             ),
-            child: ScrollConfiguration(
-              behavior: ScrollConfiguration.of(context).copyWith(
-                dragDevices: {
-                  PointerDeviceKind.touch,
-                  PointerDeviceKind.mouse,
-                },
-              ),
-              child: SingleChildScrollView(
-                physics: const ClampingScrollPhysics(),
-                controller: ScrollController(),
-                child: Container(
-                  padding: const EdgeInsets.fromLTRB(0, 20, 0, 0),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      response != 404
-                          ? const Icon(Icons.check)
-                          : const Icon(Icons.close),
-                      const SizedBox(
-                        height: 20,
+            ReText(
+              text: response != 404 ? 'Resident Found!' : 'Resident Not Found!',
+              isHeading: true,
+              fontSize: 20,
+              fontWeight: FontWeight.w600,
+              color: ColorsTheme.primary,
+              textAlign: TextAlign.center,
+            ),
+            const SizedBox(
+              height: 20,
+            ),
+            const Divider(
+              height: 0,
+              color: ColorsTheme.primary,
+            ),
+            Row(
+              children: [
+                Expanded(
+                  child: TextButton(
+                    onPressed: () {
+                      Get.back();
+                    },
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 10),
+                      child: Text(
+                        "Close",
+                        style: GoogleFonts.nunito(
+                          fontSize: 18,
+                          letterSpacing: 0.125,
+                          color: ColorsTheme.primary,
+                          fontWeight: FontWeight.w800,
+                        ),
                       ),
-                      ReText(
-                        text: response != 404
-                            ? 'Resident Found!'
-                            : 'Resident Not Found!',
-                        isHeading: true,
-                        fontSize: 20,
-                        fontWeight: FontWeight.w600,
-                        color: ColorsTheme.primary,
-                        textAlign: TextAlign.center,
-                      ),
-                      const SizedBox(
-                        height: 20,
-                      ),
-                      const Divider(
-                        height: 0,
-                        color: ColorsTheme.primary,
-                      ),
-                      Row(
-                        children: [
-                          Expanded(
+                    ),
+                  ),
+                ),
+                if (response == 404)
+                  Expanded(
+                    child: Row(
+                      children: [
+                        const SizedBox(
+                          height: 56,
+                          child: VerticalDivider(
+                            width: 0.1,
+                            color: ColorsTheme.primary,
+                          ),
+                        ),
+                        Expanded(
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 10),
                             child: TextButton(
                               onPressed: () {
-                                Get.back();
+                                controller.returnPackage(packageId);
+                                Get.dialog(
+                                  const Center(
+                                    child: Center(
+                                      child: CircularProgressIndicator(),
+                                    ),
+                                  ),
+                                );
                               },
-                              child: Padding(
-                                padding:
-                                    const EdgeInsets.symmetric(horizontal: 10),
-                                child: Text(
-                                  "Close",
-                                  style: GoogleFonts.nunito(
+                              child: Text(
+                                "Return",
+                                style: GoogleFonts.nunito(
                                     fontSize: 18,
                                     letterSpacing: 0.125,
                                     color: ColorsTheme.primary,
-                                    fontWeight: FontWeight.w800,
-                                  ),
-                                ),
+                                    fontWeight: FontWeight.w800),
                               ),
                             ),
                           ),
-                          if (response == 404)
-                            Row(
-                              children: [
-                                const SizedBox(
-                                  height: 56,
-                                  child: VerticalDivider(
-                                    width: 0.1,
-                                    color: ColorsTheme.primary,
-                                  ),
-                                ),
-                                Expanded(
-                                  child: Padding(
-                                    padding: const EdgeInsets.symmetric(
-                                        horizontal: 10),
-                                    child: TextButton(
-                                      onPressed: () {
-                                        controller.returnPackage(packageId);
-                                      },
-                                      child: Text(
-                                        "Return",
-                                        style: GoogleFonts.nunito(
-                                            fontSize: 18,
-                                            letterSpacing: 0.125,
-                                            color: ColorsTheme.primary,
-                                            fontWeight: FontWeight.w800),
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                        ],
-                      ),
-                    ],
+                        ),
+                      ],
+                    ),
                   ),
-                ),
-              ),
+              ],
             ),
-          );
-        },
-      );
-    },
+          ],
+        ),
+      ),
+    ),
   );
 }
