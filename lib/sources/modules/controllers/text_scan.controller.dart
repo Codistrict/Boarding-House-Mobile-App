@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'dart:core';
 
 import 'package:flutter/material.dart';
 import 'package:google_mlkit_text_recognition/google_mlkit_text_recognition.dart';
@@ -59,27 +60,56 @@ class TextScannerController extends GetxController {
     }
   }
 
-  Future getData(recognizedText) async {
+  Future getData(RecognizedText recognizedText) async {
     List<String> text = [];
-    int tempIndex = 0;
 
-    for (var element in recognizedText.blocks) {
-      text.add(element.text);
+    RegExp nama = RegExp('name', caseSensitive: false);
+    RegExp address = RegExp('address', caseSensitive: false);
+    RegExp building = RegExp('building', caseSensitive: false);
+    RegExp room = RegExp('room', caseSensitive: false);
+    RegExp resi = RegExp('resi', caseSensitive: false);
+
+    var tempName = '';
+    var tempAddress = '';
+    var tempBuilding = '';
+    var tempRoom = '';
+    var tempResi = '';
+
+    for (TextBlock block in recognizedText.blocks) {
+      for (TextLine line in block.lines) {
+        text.add(line.text);
+      }
     }
 
-    for (int i = 0; i < text.length; i++) {
-      if (text[i] == 'Recipient') {
-        tempIndex = i;
-        break;
+    for (var element in text) {
+      if (element.contains(nama) && element.contains(':')) {
+        var index = element.indexOf(':') + 2;
+        tempName = element.substring(index);
+      }
+      if (element.contains(address) && element.contains(':')) {
+        var index = element.indexOf(':') + 2;
+        tempAddress = element.substring(index);
+      }
+      if (element.contains(building) && element.contains(':')) {
+        var index = element.indexOf(':') + 2;
+        tempBuilding = element.substring(index);
+      }
+      if (element.contains(room) && element.contains(':')) {
+        var index = element.indexOf(':') + 2;
+        tempRoom = element.substring(index);
+      }
+      if (element.contains(resi) && element.contains('.')) {
+        var index = element.indexOf('.') + 2;
+        tempResi = element.substring(index);
       }
     }
 
     Map<String, String> data = {
-      'recipient': text[tempIndex + 1],
-      'building': text[tempIndex + 2],
-      'address': text[tempIndex + 3],
-      'room': text[tempIndex + 4],
-      'resi': text[tempIndex + 5],
+      'recipient': tempName,
+      'building': tempBuilding,
+      'address': tempAddress,
+      'room': tempRoom,
+      'resi': tempResi,
     };
 
     return data;
