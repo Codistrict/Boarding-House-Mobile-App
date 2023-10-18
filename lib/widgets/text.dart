@@ -6,23 +6,25 @@ class ReText extends StatelessWidget {
   final EdgeInsetsGeometry margin;
   final String text;
   final bool isHeading;
-  final bool softWrap;
-  final TextAlign textAlign;
-  final TextOverflow textOverflow;
+  final bool? softWrap;
+  final TextAlign? textAlign;
+  final TextOverflow? textOverflow;
   final double fontSize;
   final Color color;
   final FontWeight fontWeight;
+  final int maxLines;
   const ReText({
     super.key,
     this.margin = const EdgeInsets.all(2),
     required this.text,
     this.isHeading = false,
-    this.softWrap = true,
-    this.textAlign = TextAlign.left,
-    this.textOverflow = TextOverflow.ellipsis,
+    this.softWrap,
+    this.textAlign,
+    this.textOverflow,
     this.fontSize = 16,
     this.color = ColorsTheme.primary,
     this.fontWeight = FontWeight.normal,
+    this.maxLines = 3,
   });
 
   @override
@@ -34,6 +36,7 @@ class ReText extends StatelessWidget {
         softWrap: softWrap,
         textAlign: textAlign,
         overflow: textOverflow,
+        maxLines: maxLines,
         style: isHeading
             ? GoogleFonts.poppins(
                 fontSize: fontSize,
