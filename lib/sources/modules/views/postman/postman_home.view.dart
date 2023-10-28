@@ -81,7 +81,7 @@ class PostmanHomeView extends GetView<NavController> {
               child: Obx(
                 () => packageList(
                   controller.ctrlPackage.listPackageHistory(),
-                  false,
+                  true,
                   true,
                   3,
                   controller,

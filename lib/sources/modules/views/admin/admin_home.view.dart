@@ -115,7 +115,7 @@ class AdminHomeView extends GetView<NavController> {
               child: Obx(
                 () => packageList(
                   controller.ctrlPackage.listPackageHistory(),
-                  false,
+                  true,
                   true,
                   2,
                   controller,

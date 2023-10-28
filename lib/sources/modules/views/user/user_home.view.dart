@@ -82,7 +82,7 @@ class UserHomeView extends GetView<NavController> {
               child: Obx(
                 () => packageList(
                   controller.ctrlPackage.listPackageHistory(),
-                  false,
+                  true,
                   true,
                   1,
                   controller,
