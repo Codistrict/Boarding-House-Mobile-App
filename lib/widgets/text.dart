@@ -19,7 +19,7 @@ class ReText extends StatelessWidget {
     this.isHeading = false,
     this.softWrap = true,
     this.textAlign,
-    this.textOverflow = TextOverflow.ellipsis,
+    this.textOverflow,
     this.fontSize = 16,
     this.color = ColorsTheme.primary,
     this.fontWeight = FontWeight.normal,

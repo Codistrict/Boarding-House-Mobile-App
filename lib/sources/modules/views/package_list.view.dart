@@ -44,27 +44,27 @@ Widget packageList(Future future, bool isClickable, bool isHistory, int role,
                     title: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            ReText(
-                              text: '${snapData[2][index]['no_resi']}',
-                              isHeading: true,
-                              fontSize: 17,
-                              fontWeight: FontWeight.w400,
-                              color: ColorsTheme.primary,
-                              textAlign: TextAlign.center,
-                            ),
-                            const SizedBox(height: 5),
-                            ReText(
-                              text: '${snapData[2][index]['street_name']}',
-                              isHeading: true,
-                              fontSize: 13,
-                              fontWeight: FontWeight.w400,
-                              color: ColorsTheme.primary,
-                              textAlign: TextAlign.center,
-                            ),
-                          ],
+                        Expanded(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              ReText(
+                                text: '${snapData[2][index]['no_resi']}',
+                                isHeading: true,
+                                fontSize: 17,
+                                fontWeight: FontWeight.w400,
+                                color: ColorsTheme.primary,
+                              ),
+                              const SizedBox(height: 5),
+                              ReText(
+                                text: '${snapData[2][index]['street_name']}',
+                                isHeading: true,
+                                fontSize: 13,
+                                fontWeight: FontWeight.w400,
+                                color: ColorsTheme.primary,
+                              ),
+                            ],
+                          ),
                         ),
                         role == 2 && !isHistory
                             ? ReElevatedButton(
