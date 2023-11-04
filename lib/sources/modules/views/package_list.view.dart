@@ -232,14 +232,15 @@ class DetailTransactionNavigationView extends GetView<NavController> {
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceBetween,
                                   children: [
-                                    ReText(
-                                      text:
-                                          'Resi No. ${snapData[2][0]['noresi']}',
-                                      isHeading: true,
-                                      fontSize: 16,
-                                      fontWeight: FontWeight.w700,
-                                      color: ColorsTheme.onPrimary,
-                                      textAlign: TextAlign.center,
+                                    Expanded(
+                                      child: ReText(
+                                        text:
+                                            'Resi No. ${snapData[2][0]['noresi']}',
+                                        isHeading: true,
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.w700,
+                                        color: ColorsTheme.onPrimary,
+                                      ),
                                     ),
                                     Align(
                                       alignment: Alignment.topRight,
@@ -260,64 +261,70 @@ class DetailTransactionNavigationView extends GetView<NavController> {
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceBetween,
                                   children: [
-                                    Column(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        Column(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: [
-                                            ReText(
-                                              text: '${snapData[2][0]['name']}',
-                                              isHeading: true,
-                                              fontSize: 15,
-                                              fontWeight: FontWeight.w400,
-                                              color: ColorsTheme.onPrimary,
-                                              textAlign: TextAlign.center,
-                                            ),
-                                            ReText(
-                                              text:
-                                                  '${snapData[2][0]['street_name']}',
-                                              isHeading: true,
-                                              fontSize: 15,
-                                              fontWeight: FontWeight.w400,
-                                              color: ColorsTheme.onPrimary,
-                                              textAlign: TextAlign.center,
-                                            ),
-                                            ReText(
-                                              text:
-                                                  '${snapData[2][0]['building_name']}',
-                                              isHeading: true,
-                                              fontSize: 15,
-                                              fontWeight: FontWeight.w400,
-                                              color: ColorsTheme.onPrimary,
-                                              textAlign: TextAlign.center,
-                                            ),
-                                            ReText(
-                                              text:
-                                                  'Room : ${snapData[2][0]['room_number']}',
-                                              isHeading: true,
-                                              fontSize: 15,
-                                              fontWeight: FontWeight.w400,
-                                              color: ColorsTheme.onPrimary,
-                                              textAlign: TextAlign.center,
-                                            ),
-                                          ],
-                                        ),
-                                        const SizedBox(height: 20),
-                                        ReText(
-                                          text:
-                                              'Postman : ${snapData[2][0]['postman_name']}',
-                                          isHeading: true,
-                                          fontSize: 15,
-                                          fontWeight: FontWeight.w700,
-                                          color: ColorsTheme.onPrimary,
-                                          textAlign: TextAlign.center,
-                                        ),
-                                      ],
+                                    Expanded(
+                                      child: Column(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                              ReText(
+                                                text:
+                                                    '${snapData[2][0]['name']}',
+                                                isHeading: true,
+                                                fontSize: 15,
+                                                fontWeight: FontWeight.w400,
+                                                color: ColorsTheme.onPrimary,
+                                              ),
+                                              ReText(
+                                                text:
+                                                    '${snapData[2][0]['street_name']}',
+                                                isHeading: true,
+                                                fontSize: 15,
+                                                fontWeight: FontWeight.w400,
+                                                color: ColorsTheme.onPrimary,
+                                              ),
+                                              ReText(
+                                                text:
+                                                    '${snapData[2][0]['building_name']}',
+                                                isHeading: true,
+                                                fontSize: 15,
+                                                fontWeight: FontWeight.w400,
+                                                color: ColorsTheme.onPrimary,
+                                              ),
+                                              ReText(
+                                                text:
+                                                    'Room : ${snapData[2][0]['room_number']}',
+                                                isHeading: true,
+                                                fontSize: 15,
+                                                fontWeight: FontWeight.w400,
+                                                color: ColorsTheme.onPrimary,
+                                              ),
+                                            ],
+                                          ),
+                                          const SizedBox(height: 20),
+                                          ReText(
+                                            text:
+                                                'Received by : ${snapData[2][0]['name']}',
+                                            isHeading: true,
+                                            fontSize: 15,
+                                            fontWeight: FontWeight.w700,
+                                            color: ColorsTheme.onPrimary,
+                                          ),
+                                          ReText(
+                                            text:
+                                                'Postman : ${snapData[2][0]['postman_name']}',
+                                            isHeading: true,
+                                            fontSize: 15,
+                                            fontWeight: FontWeight.w700,
+                                            color: ColorsTheme.onPrimary,
+                                          ),
+                                        ],
+                                      ),
                                     ),
                                     ReText(
                                       text:
@@ -326,7 +333,6 @@ class DetailTransactionNavigationView extends GetView<NavController> {
                                       fontSize: 20,
                                       fontWeight: FontWeight.w700,
                                       color: ColorsTheme.onPrimary,
-                                      textAlign: TextAlign.center,
                                     ),
                                   ],
                                 ),
@@ -362,14 +368,16 @@ class DetailTransactionNavigationView extends GetView<NavController> {
                                     mainAxisAlignment:
                                         MainAxisAlignment.spaceBetween,
                                     children: [
-                                      ReText(
-                                        text:
-                                            '${snapData[2][0]['detail_resident'][index]['date']}',
-                                        isHeading: true,
-                                        fontSize: 15,
-                                        fontWeight: FontWeight.w400,
-                                        color: ColorsTheme.primary,
-                                        textAlign: TextAlign.center,
+                                      Expanded(
+                                        child: ReText(
+                                          text:
+                                              '${snapData[2][0]['detail_resident'][index]['date']}',
+                                          isHeading: true,
+                                          fontSize: 15,
+                                          fontWeight: FontWeight.w400,
+                                          color: ColorsTheme.primary,
+                                          textAlign: TextAlign.center,
+                                        ),
                                       ),
                                       ReText(
                                         text:
