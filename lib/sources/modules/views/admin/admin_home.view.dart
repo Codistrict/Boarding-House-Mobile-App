@@ -72,54 +72,68 @@ class AdminHomeView extends GetView<NavController> {
               fontWeight: FontWeight.w700,
             ),
           ),
-          const ReText(
-            text: 'On Progress',
-            isHeading: true,
-            fontSize: 18,
-            fontWeight: FontWeight.bold,
-            color: ColorsTheme.primary,
-            textAlign: TextAlign.center,
-          ),
-          const SizedBox(height: 10),
-          Expanded(
-            child: ScrollConfiguration(
-              behavior: ScrollConfiguration.of(context).copyWith(
-                dragDevices: {PointerDeviceKind.mouse, PointerDeviceKind.touch},
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              const ReText(
+                text: 'On Going',
+                isHeading: true,
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
+                color: ColorsTheme.primary,
+                textAlign: TextAlign.center,
               ),
-              child: Obx(
-                () => packageList(
-                  controller.ctrlPackage.listPackage(),
-                  true,
-                  false,
-                  2,
-                  controller,
+              IconButton(
+                onPressed: () {
+                  controller.ctrlPackage.getPackage();
+                },
+                icon: const Icon(
+                  Icons.refresh,
                 ),
+              ),
+            ],
+          ),
+          Expanded(
+            child: Obx(
+              () => packageList(
+                controller.ctrlPackage.listPackage(),
+                true,
+                false,
+                2,
+                controller,
               ),
             ),
           ),
           const SizedBox(height: 20),
-          const ReText(
-            text: 'History',
-            isHeading: true,
-            fontSize: 18,
-            fontWeight: FontWeight.bold,
-            color: ColorsTheme.primary,
-            textAlign: TextAlign.center,
-          ),
-          const SizedBox(height: 10),
-          Expanded(
-            child: ScrollConfiguration(
-              behavior: ScrollConfiguration.of(context).copyWith(
-                dragDevices: {PointerDeviceKind.mouse, PointerDeviceKind.touch},
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              const ReText(
+                text: 'History',
+                isHeading: true,
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
+                color: ColorsTheme.primary,
+                textAlign: TextAlign.center,
               ),
-              child: Obx(
-                () => packageList(
-                  controller.ctrlPackage.listPackageHistory(),
-                  true,
-                  true,
-                  2,
-                  controller,
+              IconButton(
+                onPressed: () {
+                  controller.ctrlPackage.getPackageHistory();
+                },
+                icon: const Icon(
+                  Icons.refresh,
                 ),
+              ),
+            ],
+          ),
+          Expanded(
+            child: Obx(
+              () => packageList(
+                controller.ctrlPackage.listPackageHistory(),
+                true,
+                true,
+                2,
+                controller,
               ),
             ),
           ),

@@ -1,4 +1,3 @@
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -31,61 +30,68 @@ class PostmanHomeView extends GetView<NavController> {
             color: ColorsTheme.primary,
             height: 32,
           ),
-          const Row(
+          Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              ReText(
-                text: 'On Progress',
+              const ReText(
+                text: 'On Going',
                 isHeading: true,
                 fontSize: 18,
                 fontWeight: FontWeight.bold,
                 color: ColorsTheme.primary,
                 textAlign: TextAlign.center,
               ),
+              IconButton(
+                onPressed: () {
+                  controller.ctrlPackage.getPackage();
+                },
+                icon: const Icon(
+                  Icons.refresh,
+                ),
+              ),
             ],
           ),
-          const SizedBox(height: 10),
           Expanded(
-            child: ScrollConfiguration(
-              behavior: ScrollConfiguration.of(context).copyWith(
-                dragDevices: {PointerDeviceKind.mouse, PointerDeviceKind.touch},
-              ),
-              child: Obx(
-                () => packageList(
-                  controller.ctrlPackage.listPackage(),
-                  true,
-                  false,
-                  3,
-                  controller,
-                ),
+            child: Obx(
+              () => packageList(
+                controller.ctrlPackage.listPackage(),
+                true,
+                false,
+                3,
+                controller,
               ),
             ),
           ),
           const SizedBox(height: 20),
-
-          const SizedBox(height: 20),
-          const ReText(
-            text: 'History',
-            isHeading: true,
-            fontSize: 18,
-            fontWeight: FontWeight.bold,
-            color: ColorsTheme.primary,
-            textAlign: TextAlign.center,
-          ),
-          const SizedBox(height: 10),
-          Expanded(
-            child: ScrollConfiguration(
-              behavior: ScrollConfiguration.of(context).copyWith(
-                dragDevices: {PointerDeviceKind.mouse, PointerDeviceKind.touch},
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              const ReText(
+                text: 'History',
+                isHeading: true,
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
+                color: ColorsTheme.primary,
+                textAlign: TextAlign.center,
               ),
-              child: Obx(
-                () => packageList(
-                  controller.ctrlPackage.listPackageHistory(),
-                  true,
-                  true,
-                  3,
-                  controller,
+              IconButton(
+                onPressed: () {
+                  controller.ctrlPackage.getPackageHistory();
+                },
+                icon: const Icon(
+                  Icons.refresh,
                 ),
+              ),
+            ],
+          ),
+          Expanded(
+            child: Obx(
+              () => packageList(
+                controller.ctrlPackage.listPackageHistory(),
+                true,
+                true,
+                3,
+                controller,
               ),
             ),
           ),

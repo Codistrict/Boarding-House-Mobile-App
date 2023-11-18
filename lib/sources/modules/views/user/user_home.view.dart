@@ -1,4 +1,3 @@
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../../../themes/colors/colors.dart';
@@ -31,10 +30,10 @@ class UserHomeView extends GetView<NavController> {
             color: ColorsTheme.primary,
             height: 32,
           ),
-          const Row(
+          Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              ReText(
+              const ReText(
                 text: 'On Going',
                 isHeading: true,
                 fontSize: 18,
@@ -42,29 +41,32 @@ class UserHomeView extends GetView<NavController> {
                 color: ColorsTheme.primary,
                 textAlign: TextAlign.center,
               ),
+              IconButton(
+                onPressed: () {
+                  controller.ctrlPackage.getPackage();
+                },
+                icon: const Icon(
+                  Icons.refresh,
+                ),
+              ),
             ],
           ),
           Expanded(
-            child: ScrollConfiguration(
-              behavior: ScrollConfiguration.of(context).copyWith(
-                dragDevices: {PointerDeviceKind.mouse, PointerDeviceKind.touch},
-              ),
-              child: Obx(
-                () => packageList(
-                  controller.ctrlPackage.listPackage(),
-                  true,
-                  false,
-                  1,
-                  controller,
-                ),
+            child: Obx(
+              () => packageList(
+                controller.ctrlPackage.listPackage(),
+                true,
+                false,
+                1,
+                controller,
               ),
             ),
           ),
           const SizedBox(height: 24),
-          const Row(
+          Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              ReText(
+              const ReText(
                 text: 'History',
                 isHeading: true,
                 fontSize: 18,
@@ -72,21 +74,24 @@ class UserHomeView extends GetView<NavController> {
                 color: ColorsTheme.primary,
                 textAlign: TextAlign.center,
               ),
+              IconButton(
+                onPressed: () {
+                  controller.ctrlPackage.getPackageHistory();
+                },
+                icon: const Icon(
+                  Icons.refresh,
+                ),
+              ),
             ],
           ),
           Expanded(
-            child: ScrollConfiguration(
-              behavior: ScrollConfiguration.of(context).copyWith(
-                dragDevices: {PointerDeviceKind.mouse, PointerDeviceKind.touch},
-              ),
-              child: Obx(
-                () => packageList(
-                  controller.ctrlPackage.listPackageHistory(),
-                  true,
-                  true,
-                  1,
-                  controller,
-                ),
+            child: Obx(
+              () => packageList(
+                controller.ctrlPackage.listPackageHistory(),
+                true,
+                true,
+                1,
+                controller,
               ),
             ),
           ),

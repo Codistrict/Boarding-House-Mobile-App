@@ -51,16 +51,19 @@ class PackageController extends GetxController {
 
   getPackageDetail(packageId) {
     detailPackage(packageService.readPackageDetail(packageId));
+    debugPrint('Refreshed');
   }
 
   getPackageHistory() {
     listPackageHistory(packageService.readPackageHistory(
         authController.uid(), authController.role()));
+    debugPrint('Refreshed');
   }
 
   getPackage() {
     listPackage(packageService.readPackage(
         authController.uid(), authController.role()));
+    debugPrint('Refreshed');
   }
 
   Future setController(packageId) async {

@@ -342,58 +342,84 @@ class DetailTransactionNavigationView extends GetView<NavController> {
                         ),
                       ),
                       Expanded(
-                        child: ScrollConfiguration(
-                          behavior: ScrollConfiguration.of(context).copyWith(
-                            dragDevices: {
-                              PointerDeviceKind.mouse,
-                              PointerDeviceKind.touch
-                            },
-                          ),
-                          child: ListView.builder(
-                            shrinkWrap: true,
-                            scrollDirection: Axis.vertical,
-                            controller: ScrollController(),
-                            physics: const ClampingScrollPhysics(),
-                            itemCount: snapData[2][0]['detail_resident'].length,
-                            itemBuilder: (context, index) {
-                              return Card(
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(10),
-                                  side: const BorderSide(
-                                      color: ColorsTheme.secondary),
-                                ),
-                                color: ColorsTheme.onPrimary,
-                                child: ListTile(
-                                  title: Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.end,
+                          children: [
+                            GestureDetector(
+                              onTap: () {
+                                controller.ctrlPackage.getPackageDetail(
+                                    Get.parameters['id_package']);
+                              },
+                              child: const Card(
+                                child: Padding(
+                                  padding: EdgeInsets.all(8.0),
+                                  child: Row(
+                                    mainAxisSize: MainAxisSize.min,
                                     children: [
-                                      Expanded(
-                                        child: ReText(
-                                          text:
-                                              '${snapData[2][0]['detail_resident'][index]['date']}',
-                                          isHeading: true,
-                                          fontSize: 15,
-                                          fontWeight: FontWeight.w400,
-                                          color: ColorsTheme.primary,
-                                          textAlign: TextAlign.center,
-                                        ),
-                                      ),
                                       ReText(
-                                        text:
-                                            '${snapData[2][0]['detail_resident'][index]['status_name']}',
+                                        text: 'Refresh',
                                         isHeading: true,
                                         fontSize: 15,
-                                        fontWeight: FontWeight.w700,
+                                        fontWeight: FontWeight.w400,
                                         color: ColorsTheme.primary,
                                         textAlign: TextAlign.center,
+                                      ),
+                                      Icon(
+                                        Icons.refresh,
                                       ),
                                     ],
                                   ),
                                 ),
-                              );
-                            },
-                          ),
+                              ),
+                            ),
+                            Expanded(
+                              child: ListView.builder(
+                                scrollDirection: Axis.vertical,
+                                controller: ScrollController(),
+                                physics: const ClampingScrollPhysics(),
+                                itemCount:
+                                    snapData[2][0]['detail_resident'].length,
+                                itemBuilder: (context, index) {
+                                  return Card(
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(10),
+                                      side: const BorderSide(
+                                          color: ColorsTheme.secondary),
+                                    ),
+                                    color: ColorsTheme.onPrimary,
+                                    child: ListTile(
+                                      title: Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          Expanded(
+                                            child: ReText(
+                                              text:
+                                                  '${snapData[2][0]['detail_resident'][index]['date']}',
+                                              isHeading: true,
+                                              fontSize: 15,
+                                              fontWeight: FontWeight.w400,
+                                              color: ColorsTheme.primary,
+                                              textAlign: TextAlign.center,
+                                            ),
+                                          ),
+                                          ReText(
+                                            text:
+                                                '${snapData[2][0]['detail_resident'][index]['status_name']}',
+                                            isHeading: true,
+                                            fontSize: 15,
+                                            fontWeight: FontWeight.w700,
+                                            color: ColorsTheme.primary,
+                                            textAlign: TextAlign.center,
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  );
+                                },
+                              ),
+                            ),
+                          ],
                         ),
                       ),
                     ],
