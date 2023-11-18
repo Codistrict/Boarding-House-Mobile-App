@@ -40,7 +40,7 @@ class ReText extends StatelessWidget {
                 color: color,
                 fontWeight: fontWeight,
               )
-            : GoogleFonts.sourceSansPro(
+            : GoogleFonts.sourceSans3(
                 fontSize: fontSize,
                 color: color,
                 fontWeight: fontWeight,
