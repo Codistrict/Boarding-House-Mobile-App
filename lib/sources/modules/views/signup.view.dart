@@ -62,7 +62,8 @@ class SignUpView extends GetView<AuthController> {
                       const ReText(
                         text: 'Name',
                         fontWeight: FontWeight.w600,
-                        margin: EdgeInsets.symmetric(vertical: 2, horizontal: 12),
+                        margin:
+                            EdgeInsets.symmetric(vertical: 2, horizontal: 12),
                       ),
                       ReTextField(
                         textController: controller.textCtrlName(),
@@ -80,7 +81,8 @@ class SignUpView extends GetView<AuthController> {
                       const ReText(
                         text: 'Email',
                         fontWeight: FontWeight.w600,
-                        margin: EdgeInsets.symmetric(vertical: 2, horizontal: 12),
+                        margin:
+                            EdgeInsets.symmetric(vertical: 2, horizontal: 12),
                       ),
                       ReTextField(
                         textController: controller.textCtrlEmail(),
@@ -99,12 +101,26 @@ class SignUpView extends GetView<AuthController> {
                       const ReText(
                         text: 'Password',
                         fontWeight: FontWeight.w600,
-                        margin: EdgeInsets.symmetric(vertical: 2, horizontal: 12),
+                        margin:
+                            EdgeInsets.symmetric(vertical: 2, horizontal: 12),
                       ),
-                      ReTextField(
-                        textController: controller.textCtrlPassword(),
-                        hintText: 'Please type your password here!',
-                        validator: controller.validatePassword,
+                      Obx(
+                        () => ReTextField(
+                          textController: controller.textCtrlPassword(),
+                          hintText: 'Please type your password here!',
+                          validator: controller.validatePassword,
+                          obscureText: controller.isVisible(),
+                          suffixIcon: IconButton(
+                            onPressed: () {
+                              controller.passwordVisibility();
+                            },
+                            icon: Icon(
+                              controller.isVisible()
+                                  ? Icons.visibility
+                                  : Icons.visibility_off,
+                            ),
+                          ),
+                        ),
                       ),
                     ],
                   ),

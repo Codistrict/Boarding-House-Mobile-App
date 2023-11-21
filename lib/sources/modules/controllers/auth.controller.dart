@@ -299,4 +299,10 @@ class AuthController extends GetxController {
       return Get.snackbar("Error", response);
     }
   }
+
+  RxBool isVisible = true.obs;
+
+  void passwordVisibility() {
+    isVisible(!isVisible());
+  }
 }

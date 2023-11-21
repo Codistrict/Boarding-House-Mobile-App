@@ -85,10 +85,23 @@ class LoginView extends GetView<AuthController> {
                         margin:
                             EdgeInsets.symmetric(vertical: 2, horizontal: 12),
                       ),
-                      ReTextField(
-                        textController: controller.textCtrlPassword(),
-                        hintText: 'Please type your password here!',
-                        validator: controller.validatePassword,
+                      Obx(
+                        () => ReTextField(
+                          textController: controller.textCtrlPassword(),
+                          hintText: 'Please type your password here!',
+                          validator: controller.validatePassword,
+                          obscureText: controller.isVisible(),
+                          suffixIcon: IconButton(
+                            onPressed: () {
+                              controller.passwordVisibility();
+                            },
+                            icon: Icon(
+                              controller.isVisible()
+                                  ? Icons.visibility
+                                  : Icons.visibility_off,
+                            ),
+                          ),
+                        ),
                       ),
                     ],
                   ),
