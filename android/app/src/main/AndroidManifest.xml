@@ -15,7 +15,7 @@
 
     </queries>
     <application
-        android:label="skripsi_kos_app"
+        android:label="Skripsi Bebek"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
 

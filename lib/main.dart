@@ -57,7 +57,7 @@ class MainApp extends StatelessWidget {
       builder: (context, child) {
         return GetMaterialApp(
           debugShowCheckedModeBanner: false,
-          title: 'Boarding House Application',
+          title: 'Skripsi Bebek',
           initialRoute: '/',
           initialBinding: AuthBinding(),
           getPages: [
