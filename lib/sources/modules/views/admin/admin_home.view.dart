@@ -49,12 +49,27 @@ class AdminHomeView extends GetView<NavController> {
                       textAlign: TextAlign.center,
                     ),
                     const SizedBox(height: 5),
-                    Text(
-                      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries",
-                      style: GoogleFonts.sourceSans3(
-                          fontSize: 13,
-                          fontWeight: FontWeight.w400,
-                          color: ColorsTheme.onPrimary),
+                    FutureBuilder(
+                      future: controller.ctrlAuth.profile(),
+                      builder: (context, snapshot) {
+                        if (snapshot.hasData) {
+                          List snapData = snapshot.data! as List;
+                          if (snapData[0] != 404) {
+                            return Text(
+                              snapData[2]['biography'],
+                              style: GoogleFonts.sourceSans3(
+                                  fontSize: 13,
+                                  fontWeight: FontWeight.w400,
+                                  color: ColorsTheme.onPrimary),
+                            );
+                          } else if (snapData[0] == 404) {
+                            return const Center(
+                              child: ReText(text: 'No data found!'),
+                            );
+                          }
+                        }
+                        return const CircularProgressIndicator();
+                      },
                     ),
                   ],
                 ),
