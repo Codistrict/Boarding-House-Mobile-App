@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:skripsi_kos_app/sources/modules/views/notification.view.dart';
 import 'package:skripsi_kos_app/sources/modules/views/splash.view.dart';
 
 import 'bindings.dart';
@@ -131,6 +132,11 @@ class MainApp extends StatelessWidget {
             GetPage(
               name: '/sett',
               page: () => const SettingNavigationView(),
+            ),
+            GetPage(
+              name: '/notif',
+              page: () => const NotificationView(),
+              binding: NavBinding(),
             ),
           ],
         );

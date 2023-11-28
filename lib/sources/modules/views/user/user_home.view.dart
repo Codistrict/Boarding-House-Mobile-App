@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:skripsi_kos_app/sources/services/notification.service.dart';
 import '../../../../themes/colors/colors.dart';
 
 import '../../../../widgets/widgets.dart';
@@ -16,13 +17,28 @@ class UserHomeView extends GetView<NavController> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const ReText(
-            text: 'WELCOME, User',
-            isHeading: true,
-            fontSize: 25,
-            fontWeight: FontWeight.bold,
-            color: ColorsTheme.primary,
-            textAlign: TextAlign.center,
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              const ReText(
+                text: 'WELCOME, User',
+                isHeading: true,
+                fontSize: 25,
+                fontWeight: FontWeight.bold,
+                color: ColorsTheme.primary,
+                textAlign: TextAlign.center,
+              ),
+              IconButton(
+                onPressed: () {
+                  controller.futureNotif.value = NotificationService()
+                      .readNotification(controller.ctrlAuth.uid);
+                  Get.toNamed('/notif');
+                },
+                icon: const Icon(
+                  Icons.notifications,
+                ),
+              ),
+            ],
           ),
           const SizedBox(height: 10),
           const Divider(

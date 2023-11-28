@@ -19,4 +19,6 @@ class NavController extends GetxController {
   final ctrlAuth = Get.find<AuthController>();
   final ctrlPackage = Get.find<PackageController>();
   Rx<int> selectedIndex = 0.obs;
+
+  Rx<Future> futureNotif = Future.value().obs;
 }
