@@ -41,79 +41,95 @@ class SelectRoleView extends GetView<AuthController> {
 
   @override
   Widget build(BuildContext context) {
+    final deviceSize = MediaQuery.sizeOf(context);
     return Scaffold(
-      body: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 56, horizontal: 24),
-        child: Center(
-          child: Card(
-            color: ColorsTheme.primary,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(16),
-            ),
-            child: Padding(
-              padding: const EdgeInsets.symmetric(vertical: 56, horizontal: 32),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  const ReText(
-                    text: 'Select Role',
-                    isHeading: true,
-                    fontSize: 32,
-                    fontWeight: FontWeight.bold,
-                    color: ColorsTheme.onPrimary,
-                    textAlign: TextAlign.center,
-                  ),
-                  const Icon(
-                    IconsaxBold.arrow_down,
-                    size: 56,
-                    color: ColorsTheme.onPrimary,
-                  ),
-                  ReElevatedButton(
-                    onPressed: () {
-                      controller.role(1);
-                      Get.toNamed('/signin');
-                      debugPrint(
-                          'Role: ${controller.role()}\nSession: ${controller.session()}');
-                    },
-                    child: const ReText(
-                      text: 'Continue as User',
-                      color: ColorsTheme.onPrimary,
-                      fontSize: 16,
-                      fontWeight: FontWeight.w700,
-                    ),
-                  ),
-                  ReElevatedButton(
-                    onPressed: () {
-                      controller.role(3);
-                      Get.toNamed('/signin');
-                      debugPrint(
-                          'Role: ${controller.role()}\nSession: ${controller.session()}');
-                    },
-                    child: const ReText(
-                      text: 'Continue as Postman',
-                      color: ColorsTheme.onPrimary,
-                      fontWeight: FontWeight.w700,
-                    ),
-                  ),
-                  ReElevatedButton(
-                    onPressed: () {
-                      controller.role(2);
-                      Get.toNamed('/signin');
-                      debugPrint(
-                          'Role: ${controller.role()}\nSession: ${controller.session()}');
-                    },
-                    child: const ReText(
-                      text: 'Continue as Admin',
-                      color: ColorsTheme.onPrimary,
-                      fontWeight: FontWeight.w700,
-                    ),
-                  ),
-                ],
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          SizedBox(
+            width: deviceSize.width / 2.5,
+            child: const AspectRatio(
+              aspectRatio: 1 / 1,
+              child: Image(
+                image: AssetImage('lib/assets/images/app_launcher_icon.png'),
               ),
             ),
           ),
-        ),
+          Padding(
+            padding: const EdgeInsets.symmetric(vertical: 56, horizontal: 24),
+            child: Center(
+              child: Card(
+                color: ColorsTheme.primary,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(16),
+                ),
+                child: Padding(
+                  padding:
+                      const EdgeInsets.symmetric(vertical: 56, horizontal: 32),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      const ReText(
+                        text: 'Select Role',
+                        isHeading: true,
+                        fontSize: 32,
+                        fontWeight: FontWeight.bold,
+                        color: ColorsTheme.onPrimary,
+                        textAlign: TextAlign.center,
+                      ),
+                      const Icon(
+                        IconsaxBold.arrow_down,
+                        size: 56,
+                        color: ColorsTheme.onPrimary,
+                      ),
+                      ReElevatedButton(
+                        onPressed: () {
+                          controller.role(1);
+                          Get.toNamed('/signin');
+                          debugPrint(
+                              'Role: ${controller.role()}\nSession: ${controller.session()}');
+                        },
+                        child: const ReText(
+                          text: 'Continue as User',
+                          color: ColorsTheme.onPrimary,
+                          fontSize: 16,
+                          fontWeight: FontWeight.w700,
+                        ),
+                      ),
+                      ReElevatedButton(
+                        onPressed: () {
+                          controller.role(3);
+                          Get.toNamed('/signin');
+                          debugPrint(
+                              'Role: ${controller.role()}\nSession: ${controller.session()}');
+                        },
+                        child: const ReText(
+                          text: 'Continue as Postman',
+                          color: ColorsTheme.onPrimary,
+                          fontWeight: FontWeight.w700,
+                        ),
+                      ),
+                      ReElevatedButton(
+                        onPressed: () {
+                          controller.role(2);
+                          Get.toNamed('/signin');
+                          debugPrint(
+                              'Role: ${controller.role()}\nSession: ${controller.session()}');
+                        },
+                        child: const ReText(
+                          text: 'Continue as Admin',
+                          color: ColorsTheme.onPrimary,
+                          fontWeight: FontWeight.w700,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }

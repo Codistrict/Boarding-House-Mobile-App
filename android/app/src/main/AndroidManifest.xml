@@ -15,9 +15,9 @@
 
     </queries>
     <application
-        android:label="Skripsi Bebek"
+        android:label="智慧包裏管理大師"
         android:name="${applicationName}"
-        android:icon="@mipmap/ic_launcher">
+        android:icon="@mipmap/launcher_icon">
 
         <activity
             android:name=".MainActivity"

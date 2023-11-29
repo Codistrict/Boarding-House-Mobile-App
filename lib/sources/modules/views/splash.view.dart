@@ -20,21 +20,21 @@ class SplashScreenView extends GetView<SplashScreenController> {
         child: Stack(
           children: [
             Align(
-                  alignment: Alignment.bottomCenter,
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(
-                        vertical: 24, horizontal: 48),
-                    child: Obx(
-                      () => LinearProgressIndicator(
-                        value: controller.splashProgress(),
-                        backgroundColor: ColorsTheme.disabled,
-                        valueColor: const AlwaysStoppedAnimation(
-                          ColorsTheme.back1,
-                        ),
-                      ),
+              alignment: Alignment.bottomCenter,
+              child: Padding(
+                padding:
+                    const EdgeInsets.symmetric(vertical: 24, horizontal: 48),
+                child: Obx(
+                  () => LinearProgressIndicator(
+                    value: controller.splashProgress(),
+                    backgroundColor: ColorsTheme.disabled,
+                    valueColor: const AlwaysStoppedAnimation(
+                      ColorsTheme.back1,
                     ),
                   ),
                 ),
+              ),
+            ),
             Column(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
@@ -55,7 +55,7 @@ class SplashScreenView extends GetView<SplashScreenController> {
                 Center(
                   child: SizedBox(
                     child: Text(
-                      'Welcome to MyApp',
+                      'Welcome to',
                       style: GoogleFonts.poppins(
                         fontSize: 28,
                         color: ColorsTheme.onPrimary,
@@ -67,7 +67,7 @@ class SplashScreenView extends GetView<SplashScreenController> {
                 Center(
                   child: SizedBox(
                     child: Text(
-                      'Build Apps Effortlessly',
+                      '智慧包裏管理大師',
                       style: GoogleFonts.poppins(
                         fontSize: 20,
                         color: ColorsTheme.onPrimary,
