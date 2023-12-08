@@ -14,7 +14,6 @@ class AdminNavigationView extends GetView<NavController> {
   final controllerFP = Get.find<FilePickerController>();
   final controllerTS = Get.find<TextScannerController>();
 
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -59,15 +58,15 @@ class AdminNavigationView extends GetView<NavController> {
                 controllerFP.pickFile();
               },
               labelBackgroundColor: ColorsTheme.secondary),
-          SpeedDialChild(
-              elevation: 5,
-              child: const Icon(
-                Icons.list_alt,
-                color: ColorsTheme.onPrimary,
-              ),
-              backgroundColor: ColorsTheme.secondary,
-              onTap: () {},
-              labelBackgroundColor: ColorsTheme.secondary),
+          // SpeedDialChild(
+          //     elevation: 5,
+          //     child: const Icon(
+          //       Icons.list_alt,
+          //       color: ColorsTheme.onPrimary,
+          //     ),
+          //     backgroundColor: ColorsTheme.secondary,
+          //     onTap: () {},
+          //     labelBackgroundColor: ColorsTheme.secondary),
           SpeedDialChild(
               elevation: 5,
               child: const Icon(
